@@ -13,14 +13,14 @@
     width: 178px;
 }
 
-.menu {
+.main-menu {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0 58px 0 149px;
 }
 
-.menu a {
+.main-menu a {
     color: white;
     font-size: 24px;
     font-weight: 500;
