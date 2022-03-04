@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom'
 import Header from './Header/Header';
 import SideBar from './SideBar/SideBar';
 import './Layout.css';
@@ -7,6 +8,7 @@ function Layout() {
         <div>
             <Header />
             <SideBar />
+            <Outlet />
         </div>
     );
 }

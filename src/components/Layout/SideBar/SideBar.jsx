@@ -1,8 +1,8 @@
 import './SideBar.css';
-import iconSwimming from '../../../assets/icon-swimming.png'
-import iconYoga from '../../../assets/icon-yoga.png'
-import iconCycling from '../../../assets/icon-cycling.png'
-import iconBodybuilding from '../../../assets/icon-bodybuilding.png'
+import iconSwimming from '../../../assets/swimming-icon.png'
+import iconYoga from '../../../assets/yoga-icon.png'
+import iconCycling from '../../../assets/cycling-icon.png'
+import iconBodybuilding from '../../../assets/bodybuilding-icon.png'
 
 function SideBar() {
     return (
