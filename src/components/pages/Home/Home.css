@@ -1,15 +1,58 @@
 .home {
     margin-left: 117px;
+    padding: 68px 107px;
+}
+
+.home-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.hello,
+.username {
+    margin: 0 0 41px 0;
 }
 
 .hello {
     color: black;
+    font-size: 48px;
+    margin-right: 10px;
 }
 
 .username {
     color: #ff0000;
+    font-size: 48px;
 }
 
 .cheering-message {
     color: black;
+    margin: 0 0 77px 0;
+}
+
+.nutrient-item {
+    height: 124px;
+    width: 258px;
+    border-radius: 5px;
+    background: #fbfbfb;
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    margin-bottom: 39px;
+}
+
+.nutrient-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 26px;
+}
+
+.nutrient-quantity {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nutrient-name {
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
 }
