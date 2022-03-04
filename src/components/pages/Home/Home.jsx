@@ -8,8 +8,10 @@ function Home() {
     return (
         <div className='home'>
             <div className='home-header'>
-                <p className='hello'>Bonjour</p>
-                <p className='username'>Thomas</p>
+                <div className='greeting-message'>
+                    <p className='hello'>Bonjour</p>
+                    <p className='username'>Thomas</p>
+                </div>
                 <p className='cheering-message'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
 

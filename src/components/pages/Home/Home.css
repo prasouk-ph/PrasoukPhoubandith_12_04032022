@@ -8,9 +8,14 @@
     flex-direction: column;
 }
 
+.greeting-message {
+    display: flex;
+    margin-bottom: 41px;
+}
+
 .hello,
 .username {
-    margin: 0 0 41px 0;
+    margin: 0;
 }
 
 .hello {
