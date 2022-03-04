@@ -5,16 +5,16 @@ import NotFoundPage from './components/pages/NotFound/NotFound'
 import './App.css';
 
 function App() {
-  return (
-    <Router>
-        <Routes>
-            <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="*" element={<NotFoundPage />}/>
-            </Route>
-        </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="*" element={<NotFoundPage />}/>
+                </Route>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
