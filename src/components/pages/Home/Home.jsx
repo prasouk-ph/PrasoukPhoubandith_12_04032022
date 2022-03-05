@@ -3,6 +3,7 @@ import CaloriesIcon from '../../../assets/calories-icon.png'
 import ProteinsIcon from '../../../assets/protein-icon.png'
 import CarbsIcon from '../../../assets/carbs-icon.png'
 import FatIcon from '../../../assets/fat-icon.png'
+import DailyActivities from './DailyActivities/DailyActivities'
 
 function Home() {
     return (
@@ -15,8 +16,9 @@ function Home() {
                 <p className='cheering-message'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
 
-            <main>
+            <main className='home-main'>
                 <div className="charts-container">
+                    <DailyActivities />
                 </div>
 
                 <div className="nutritional-intake">

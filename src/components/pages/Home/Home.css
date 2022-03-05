@@ -11,6 +11,7 @@
 .greeting-message {
     display: flex;
     margin-bottom: 41px;
+    font-weight: 500;
 }
 
 .hello,
@@ -60,4 +61,9 @@
     color: #74798c;
     font-size: 14px;
     font-weight: 500;
+}
+
+.home-main {
+    display: flex;
+    justify-content: space-between;
 }
