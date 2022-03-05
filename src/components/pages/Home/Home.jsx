@@ -6,6 +6,7 @@ import FatIcon from '../../../assets/fat-icon.png'
 import ActivitesChart from './ActivitiesChart/ActivitiesChart'
 import SessionChart from './SessionChart/SessionChart'
 import CharateristicsChart from './CharateristicsChart/CharateristicsChart'
+import FatScore from './FatScore/FatScore'
 
 function Home() {
     return (
@@ -23,6 +24,7 @@ function Home() {
                     <ActivitesChart />
                     <SessionChart />
                     <CharateristicsChart />
+                    <FatScore />
                 </div>
 
                 <div className="nutritional-intake">

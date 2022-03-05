@@ -1,0 +1,13 @@
+.fatscore {
+    position: relative;
+}
+
+.fatscore-title {
+    position: absolute;
+    z-index: 2;
+    font-size: 15px;
+    font-weight: 500;
+    top: 24px;
+    left: 30px;
+    color: #20253a;
+}
