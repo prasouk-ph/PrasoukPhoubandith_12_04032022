@@ -3,7 +3,8 @@ import CaloriesIcon from '../../../assets/calories-icon.png'
 import ProteinsIcon from '../../../assets/protein-icon.png'
 import CarbsIcon from '../../../assets/carbs-icon.png'
 import FatIcon from '../../../assets/fat-icon.png'
-import DailyActivities from './DailyActivities/DailyActivities'
+import ActivitesChart from './ActivitiesChart/ActivitiesChart'
+import SessionChart from './SessionChart/SessionChart';
 
 function Home() {
     return (
@@ -18,7 +19,8 @@ function Home() {
 
             <main className='home-main'>
                 <div className="charts-container">
-                    <DailyActivities />
+                    <ActivitesChart />
+                    <SessionChart />
                 </div>
 
                 <div className="nutritional-intake">
