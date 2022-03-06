@@ -7,36 +7,74 @@ import {
 } from "recharts";
 import './SessionChart.css'
 
-const sessionData = [
-  {
-    day: "L",
-    duration: 20
-  },
-  {
-    day: "M",
-    duration: 50
-  },
-  {
-    day: "M",
-    duration: 30
-  },
-  {
-    day: "J",
-    duration: 40
-  },
-  {
-    day: "V",
-    duration: 10
-  },
-  {
-    day: "S",
-    duration: 70
-  },
-  {
-    day: "D",
-    duration: 45
-  }
-];
+const USER_AVERAGE_SESSIONS = [
+    {
+        userId: 12,
+        sessions: [
+            {
+                day: 1,
+                sessionLength: 30
+            },
+            {
+                day: 2,
+                sessionLength: 23
+            },
+            {
+                day: 3,
+                sessionLength: 45
+            },
+            {
+                day: 4,
+                sessionLength: 50
+            },
+            {
+                day: 5,
+                sessionLength: 0
+            },
+            {
+                day: 6,
+                sessionLength: 0
+            },
+            {
+                day: 7,
+                sessionLength: 60
+            }
+        ]
+    },
+    {
+        userId: 18,
+        sessions: [
+            {
+                day: 1,
+                sessionLength: 30
+            },
+            {
+                day: 2,
+                sessionLength: 40
+            },
+            {
+                day: 3,
+                sessionLength: 50
+            },
+            {
+                day: 4,
+                sessionLength: 30
+            },
+            {
+                day: 5,
+                sessionLength: 30
+            },
+            {
+                day: 6,
+                sessionLength: 50
+            },
+            {
+                day: 7,
+                sessionLength: 50
+            }
+        ]
+    }
+]
 
 const SessionTooltip = ({ active, payload }) => {
     if (active) {
@@ -72,7 +110,7 @@ function SessionChart() {
                 className="session-chart"
                 width={258}
                 height={263}
-                data={sessionData}
+                data={USER_AVERAGE_SESSIONS[0].sessions}
                 margin={{top: 60, right: 0, left: 0, bottom: 13
                 }}
             >
@@ -80,7 +118,7 @@ function SessionChart() {
 
                 <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
                 
-                <Line type="monotone" dataKey="duration" stroke="white" dot={false} />
+                <Line type="monotone" dataKey="sessionLength" stroke="white" dot={false} />
             </LineChart>
         </div>
   );

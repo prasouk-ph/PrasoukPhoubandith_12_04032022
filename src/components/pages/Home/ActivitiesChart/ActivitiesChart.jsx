@@ -9,58 +9,88 @@ import {
 } from "recharts";
 import './ActivitiesChart.css'
 
-const activitiesData = [
-  {
-    day: 1,
-    weight: 70,
-    calories: 350
-  },
-  {
-    day: 2,
-    weight: 68,
-    calories: 360
-  },
-  {
-    day: 3,
-    weight: 72,
-    calories: 300
-  },
-  {
-    day: 4,
-    weight: 75,
-    calories: 320
-  },
-  {
-    day: 5,
-    weight: 77,
-    calories: 400
-  },
-  {
-    day: 6,
-    weight: 69,
-    calories: 540
-  },
-  {
-    day: 7,
-    weight: 75,
-    calories: 300
-  },
-  {
-    day: 8,
-    weight: 72,
-    calories: 310
-  },
-  {
-    day: 9,
-    weight: 69,
-    calories: 280
-  },
-  {
-    day: 10,
-    weight: 68,
-    calories: 290
-  }
-];
+const USER_ACTIVITY = [
+    {
+        userId: 12,
+        sessions: [
+            {
+                day: '2020-07-01',
+                kilogram: 80,
+                calories: 240
+            },
+            {
+                day: '2020-07-02',
+                kilogram: 80,
+                calories: 220
+            },
+            {
+                day: '2020-07-03',
+                kilogram: 81,
+                calories: 280
+            },
+            {
+                day: '2020-07-04',
+                kilogram: 81,
+                calories: 290
+            },
+            {
+                day: '2020-07-05',
+                kilogram: 80,
+                calories: 160
+            },
+            {
+                day: '2020-07-06',
+                kilogram: 78,
+                calories: 162
+            },
+            {
+                day: '2020-07-07',
+                kilogram: 76,
+                calories: 390
+            }
+        ]
+    },
+    {
+        userId: 18,
+        sessions: [
+            {
+                day: '2020-07-01',
+                kilogram: 70,
+                calories: 240
+            },
+            {
+                day: '2020-07-02',
+                kilogram: 69,
+                calories: 220
+            },
+            {
+                day: '2020-07-03',
+                kilogram: 70,
+                calories: 280
+            },
+            {
+                day: '2020-07-04',
+                kilogram: 70,
+                calories: 500
+            },
+            {
+                day: '2020-07-05',
+                kilogram: 69,
+                calories: 160
+            },
+            {
+                day: '2020-07-06',
+                kilogram: 69,
+                calories: 162
+            },
+            {
+                day: '2020-07-07',
+                kilogram: 69,
+                calories: 390
+            }
+        ]
+    }
+]
 
 const ActivitesTooltip = ({ active, payload }) => {
     if (active) {
@@ -104,7 +134,7 @@ function ActivitiesChart() {
         <BarChart
             width={835}
             height={320}
-            data={activitiesData}
+            data={USER_ACTIVITY[0].sessions}
             barSize={7}
             barCategoryGap={54}
             barGap={8}
@@ -127,7 +157,7 @@ function ActivitiesChart() {
             <YAxis orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC" />
             
             <Bar
-                dataKey="weight"
+                dataKey="kilogram"
                 fill="#282D30"
                 radius={[10, 10, 0, 0]}
                 name="Poids (kg)"

@@ -7,32 +7,82 @@ import {
 } from "recharts";
 import './CharateristicsChart.css'
 
-const charateristicsData = [
+const USER_PERFORMANCE = [
     {
-        category: "Intensité",
-        grade: 25
+        userId: 12,
+        kind: {
+            1: 'cardio',
+            2: 'energy',
+            3: 'endurance',
+            4: 'strength',
+            5: 'speed',
+            6: 'intensity'
+        },
+        data: [
+            {
+                value: 80,
+                kind: 1
+            },
+            {
+                value: 120,
+                kind: 2
+            },
+            {
+                value: 140,
+                kind: 3
+            },
+            {
+                value: 50,
+                kind: 4
+            },
+            {
+                value: 200,
+                kind: 5
+            },
+            {
+                value: 90,
+                kind: 6
+            }
+        ]
     },
     {
-        category: "Vitesse",
-        grade: 50
-    },
-    {
-        category: "Force",
-        grade: 37.5
-    },
-    {
-        category: "Endurance",
-        grade: 45
-    },
-    {
-        category: "Energie",
-        grade: 42.5
-    },
-    {
-        category: "Cardio",
-        grade: 35
+        userId: 18,
+        kind: {
+            1: 'cardio',
+            2: 'energy',
+            3: 'endurance',
+            4: 'strength',
+            5: 'speed',
+            6: 'intensity'
+        },
+        data: [
+            {
+                value: 200,
+                kind: 1
+            },
+            {
+                value: 240,
+                kind: 2
+            },
+            {
+                value: 80,
+                kind: 3
+            },
+            {
+                value: 80,
+                kind: 4
+            },
+            {
+                value: 220,
+                kind: 5
+            },
+            {
+                value: 110,
+                kind: 6
+            }
+        ]
     }
-];
+]
 
 
 function CharateristicsChart() {
@@ -42,11 +92,11 @@ function CharateristicsChart() {
             outerRadius={90}
             width={258}
             height={263}
-            data={charateristicsData}
+            data={USER_PERFORMANCE[0].data}
         >
             <PolarGrid stroke="white" />
-            <PolarAngleAxis style={{fontSize: 12}} stroke="white" dataKey="category" tickLine={false}/>
-            <Radar name="Thomas" dataKey="grade" fill="#FF0101" fillOpacity={0.7} />
+            <PolarAngleAxis style={{fontSize: 12}} stroke="white" dataKey="kind" tickLine={false}/>
+            <Radar name="Thomas" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
   );
 }

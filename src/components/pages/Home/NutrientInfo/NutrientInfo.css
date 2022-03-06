@@ -1,0 +1,27 @@
+.nutrient-item {
+    height: 124px;
+    width: 258px;
+    border-radius: 5px;
+    background: #fbfbfb;
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    margin-bottom: 39px;
+}
+
+.nutrient-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 26px;
+}
+
+.nutrient-quantity {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nutrient-name {
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
+}

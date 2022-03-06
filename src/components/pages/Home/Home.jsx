@@ -7,6 +7,7 @@ import ActivitesChart from './ActivitiesChart/ActivitiesChart'
 import SessionChart from './SessionChart/SessionChart'
 import CharateristicsChart from './CharateristicsChart/CharateristicsChart'
 import FatScore from './FatScore/FatScore'
+// import MyComponent from '../../../services/UserService'
 
 function Home() {
     return (
