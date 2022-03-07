@@ -5,7 +5,7 @@ import CarbsIcon from '../../../assets/carbs-icon.png'
 import FatIcon from '../../../assets/fat-icon.png'
 import ActivitesChart from './ActivitiesChart/ActivitiesChart'
 import SessionChart from './SessionChart/SessionChart'
-import CharateristicsChart from './CharateristicsChart/CharateristicsChart'
+import CharacteristicsChart from './CharacteristicsChart/CharacteristicsChart'
 import FatScore from './FatScore/FatScore'
 // import MyComponent from '../../../services/UserService'
 // import fetchData from '../../../services/api'
@@ -45,6 +45,10 @@ function Home() {
     const userFirstName = userData?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
 
 
+    if (!isLoaded) { return (<p>Chargement...</p>) }
+
+    if (error) { return (<p>Erreur !</p>) }
+
     return (
         <div className='home'>
             <div className='home-header'>
@@ -59,7 +63,7 @@ function Home() {
                 <div className="charts-container">
                     <ActivitesChart />
                     <SessionChart />
-                    <CharateristicsChart />
+                    <CharacteristicsChart />
                     <FatScore />
                 </div>
 

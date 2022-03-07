@@ -7,90 +7,8 @@ import {
     CartesianGrid,
     Tooltip
 } from "recharts";
+import { useState, useEffect } from "react";
 import './ActivitiesChart.css'
-
-const USER_ACTIVITY = [
-    {
-        userId: 12,
-        sessions: [
-            {
-                day: '2020-07-01',
-                kilogram: 80,
-                calories: 240
-            },
-            {
-                day: '2020-07-02',
-                kilogram: 80,
-                calories: 220
-            },
-            {
-                day: '2020-07-03',
-                kilogram: 81,
-                calories: 280
-            },
-            {
-                day: '2020-07-04',
-                kilogram: 81,
-                calories: 290
-            },
-            {
-                day: '2020-07-05',
-                kilogram: 80,
-                calories: 160
-            },
-            {
-                day: '2020-07-06',
-                kilogram: 78,
-                calories: 162
-            },
-            {
-                day: '2020-07-07',
-                kilogram: 76,
-                calories: 390
-            }
-        ]
-    },
-    {
-        userId: 18,
-        sessions: [
-            {
-                day: '2020-07-01',
-                kilogram: 70,
-                calories: 240
-            },
-            {
-                day: '2020-07-02',
-                kilogram: 69,
-                calories: 220
-            },
-            {
-                day: '2020-07-03',
-                kilogram: 70,
-                calories: 280
-            },
-            {
-                day: '2020-07-04',
-                kilogram: 70,
-                calories: 500
-            },
-            {
-                day: '2020-07-05',
-                kilogram: 69,
-                calories: 160
-            },
-            {
-                day: '2020-07-06',
-                kilogram: 69,
-                calories: 162
-            },
-            {
-                day: '2020-07-07',
-                kilogram: 69,
-                calories: 390
-            }
-        ]
-    }
-]
 
 const ActivitesTooltip = ({ active, payload }) => {
     if (active) {
@@ -120,6 +38,41 @@ const styleToolTip = {
 
 
 function ActivitiesChart() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [userActivitiesData, setUserActivitiesData] = useState({});
+
+    async function fetchData() {
+        setIsLoaded(true)
+        try {
+            const response = await fetch(`http://localhost:3000/user/12/activity`)
+            if (!response.ok) {
+                throw new Error(
+                    `This is an HTTP error: The status is ${response.status}`
+                );
+            } else {
+                const { data } = await response.json()
+                // console.log(data)
+                const { sessions } = data
+                setUserActivitiesData(sessions)
+            }
+        } catch (error) {
+            console.log(error.message)
+            setError(true)
+        }
+        finally {
+            setIsLoaded(true)
+        }
+    }
+    
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    if (!isLoaded) { return (<p>Chargement...</p>) }
+
+    if (error) { return (<p>Erreur !</p>) }
+
     return (
       <div className="activities-chart">
             <div className="chart-header">
@@ -134,7 +87,7 @@ function ActivitiesChart() {
         <BarChart
             width={835}
             height={320}
-            data={USER_ACTIVITY[0].sessions}
+            data={userActivitiesData}
             barSize={7}
             barCategoryGap={54}
             barGap={8}

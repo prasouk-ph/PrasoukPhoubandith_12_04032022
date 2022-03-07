@@ -5,76 +5,8 @@ import {
     XAxis,
     Tooltip
 } from "recharts";
+import { useState, useEffect } from "react";
 import './SessionChart.css'
-
-const USER_AVERAGE_SESSIONS = [
-    {
-        userId: 12,
-        sessions: [
-            {
-                day: 1,
-                sessionLength: 30
-            },
-            {
-                day: 2,
-                sessionLength: 23
-            },
-            {
-                day: 3,
-                sessionLength: 45
-            },
-            {
-                day: 4,
-                sessionLength: 50
-            },
-            {
-                day: 5,
-                sessionLength: 0
-            },
-            {
-                day: 6,
-                sessionLength: 0
-            },
-            {
-                day: 7,
-                sessionLength: 60
-            }
-        ]
-    },
-    {
-        userId: 18,
-        sessions: [
-            {
-                day: 1,
-                sessionLength: 30
-            },
-            {
-                day: 2,
-                sessionLength: 40
-            },
-            {
-                day: 3,
-                sessionLength: 50
-            },
-            {
-                day: 4,
-                sessionLength: 30
-            },
-            {
-                day: 5,
-                sessionLength: 30
-            },
-            {
-                day: 6,
-                sessionLength: 50
-            },
-            {
-                day: 7,
-                sessionLength: 50
-            }
-        ]
-    }
-]
 
 const SessionTooltip = ({ active, payload }) => {
     if (active) {
@@ -102,6 +34,40 @@ const styleToolTip = {
 
 
 function SessionChart() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [userSessionData, setUserSessionData] = useState({});
+    async function fetchData() {
+        setIsLoaded(true)
+        try {
+            const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
+            if (!response.ok) {
+                throw new Error(
+                    `This is an HTTP error: The status is ${response.status}`
+                );
+            } else {
+                const { data } = await response.json()
+                // console.log(data)
+                const { sessions } = data
+                setUserSessionData(sessions)
+            }
+        } catch (error) {
+            console.log(error.message)
+            setError(true)
+        }
+        finally {
+            setIsLoaded(true)
+        }
+    }
+    
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    if (!isLoaded) { return (<p>Chargement...</p>) }
+
+    if (error) { return (<p>Erreur !</p>) }
+
     return (
         <div className="session-chart">
             <h2 className="session-chart-title">Durée moyenne des sessions</h2>
@@ -110,8 +76,8 @@ function SessionChart() {
                 className="session-chart"
                 width={258}
                 height={263}
-                data={USER_AVERAGE_SESSIONS[0].sessions}
-                margin={{top: 60, right: 0, left: 0, bottom: 13
+                data={userSessionData}
+                margin={{top: 60, right: 20, left: 20, bottom: 13
                 }}
             >
                 <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} />
