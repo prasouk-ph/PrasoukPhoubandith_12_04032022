@@ -52,9 +52,7 @@ function ActivitiesChart() {
                 );
             } else {
                 const { data } = await response.json()
-                // console.log(data)
-                const { sessions } = data
-                setUserActivitiesData(sessions)
+                setUserActivitiesData(data.sessions)
             }
         } catch (error) {
             console.log(error.message)
