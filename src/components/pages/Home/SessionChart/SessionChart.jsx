@@ -5,6 +5,7 @@ import {
     XAxis,
     Tooltip
 } from "recharts";
+import PropTypes from 'prop-types'
 import './SessionChart.css'
 
 const SessionTooltip = ({ active, payload }) => {
@@ -58,4 +59,11 @@ function SessionChart({ data }) {
     } else { return (<p>Chargement...</p>) }
 }
 
+SessionTooltip.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({ // shape allows to check object content type
+        day: PropTypes.string.isRequired,
+        sessionLength: PropTypes.number.isRequired,
+      }))}
+
 export default SessionChart;
+

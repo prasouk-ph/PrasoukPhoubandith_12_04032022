@@ -5,9 +5,10 @@ import {
     PolarAngleAxis,
     PolarGrid
 } from "recharts";
+import PropTypes from 'prop-types'
 
 
-function PerformanceChart({data}) {
+function PerformanceChart({ data }) {
     if (data.length > 0) {
         return (
             <RadarChart
@@ -23,6 +24,13 @@ function PerformanceChart({data}) {
             </RadarChart>
         );
     } else { return (<p>Chargement...</p>) }
+}
+
+PerformanceChart.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({ // shape allows to check object content type
+        value: PropTypes.number.isRequired,
+        kind: PropTypes.number.isRequired,
+      }))
 }
 
 export default PerformanceChart;

@@ -2,6 +2,7 @@ import React from "react";
 import './NutrientInfo.css'
 import { useState } from "react";
 import { useEffect } from "react";
+import PropTypes from 'prop-types'
 import CaloriesIcon from '../../../../assets/calories-icon.png'
 import ProteinsIcon from '../../../../assets/protein-icon.png'
 import CarbsIcon from '../../../../assets/carbs-icon.png'
@@ -14,6 +15,7 @@ function NutrientInfo({nutrientType, data}) {
     const [nutrientUnit, setNutrientUnit] = useState('Chargement...')
     const [icon, setIcon] = useState('Chargement...')
 
+    
     function getNutrientData() {
         if (data !== undefined ) {
             if (nutrientType === 'calorie') {
@@ -53,6 +55,16 @@ function NutrientInfo({nutrientType, data}) {
             </div>
         </div>
   );
+}
+
+NutrientInfo.propTypes = {
+    nutrientType: PropTypes.string.isRequired,
+    data: PropTypes.shape({ // shape allows to check object content type
+        calorieCount: PropTypes.number.isRequired,
+        proteinCount: PropTypes.number.isRequired,
+        carbohydrateCount: PropTypes.number.isRequired,
+        lipidCount: PropTypes.number.isRequired,
+    })
 }
 
 export default NutrientInfo;

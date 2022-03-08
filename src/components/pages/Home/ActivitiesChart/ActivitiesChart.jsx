@@ -7,6 +7,7 @@ import {
     CartesianGrid,
     Tooltip
 } from "recharts";
+import PropTypes from 'prop-types'
 import './ActivitiesChart.css'
 
 const ActivitesTooltip = ({ active, payload }) => {
@@ -36,7 +37,8 @@ const styleToolTip = {
 }
 
 
-function ActivitiesChart({data}) {
+
+function ActivitiesChart({ data }) {
     if (data.length > 0) {
         return (
             <div className="activities-chart">
@@ -86,6 +88,14 @@ function ActivitiesChart({data}) {
             </div>
         );
     } else { return (<p>Chargement...</p>) }
+}
+
+ActivitiesChart.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({ // shape allows to check object content type
+        calories: PropTypes.number.isRequired,
+        day: PropTypes.string.isRequired,
+        kilogram: PropTypes.number.isRequired,
+      }))
 }
 
 export default ActivitiesChart;

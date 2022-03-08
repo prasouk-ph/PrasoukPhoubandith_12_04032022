@@ -35,13 +35,15 @@ function Home() {
             setIsLoaded(true)
         }
     }
+
+    const userName = userData?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
     
     useEffect(() => {
         fetchUserData()
     }, [])
     
 
-    const [userActivitiesData, setUserActivitiesData] = useState({});
+    const [userActivitiesData, setUserActivitiesData] = useState([]);
 
     async function fetchActivitiesData() {
         setIsLoaded(false)
@@ -70,7 +72,7 @@ function Home() {
     }, [])
 
 
-    const [userSessionsData, setUserSessionsData] = useState({});
+    const [userSessionsData, setUserSessionsData] = useState([]);
 
     async function fetchSessionsData() {
         setIsLoaded(false)
@@ -98,7 +100,7 @@ function Home() {
     }, [])
 
     
-    const [userPerformanceData, setUserPerformanceData] = useState({});
+    const [userPerformanceData, setUserPerformanceData] = useState([]);
 
     async function fetchPerformanceData() {
         setIsLoaded(false)
@@ -136,7 +138,7 @@ function Home() {
                 <div className='home-header'>
                     <div className='greeting-message'>
                         <p className='hello'>Bonjour</p>
-                        <p className='username'>{userData.userInfos.firstName}</p>
+                        <p className='username'>{userName}</p> 
                     </div>
                     <p className='cheering-message'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
                 </div>

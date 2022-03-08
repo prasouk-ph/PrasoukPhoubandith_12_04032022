@@ -4,6 +4,7 @@ import {
     Pie,
     Cell
 } from "recharts";
+import PropTypes from 'prop-types'
 import './FatScore.css'
 
 // const data = [
@@ -61,6 +62,10 @@ function FatScore({ data }) {
             </div>
         );
     } else { return (<p>Chargement...</p>) }
+}
+
+FatScore.propTypes = {
+    data: PropTypes.number.isRequired
 }
 
 export default FatScore;
