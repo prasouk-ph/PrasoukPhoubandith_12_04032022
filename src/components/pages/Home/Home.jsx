@@ -100,7 +100,7 @@ function Home() {
     }, [])
 
     
-    const [userPerformanceData, setUserPerformanceData] = useState([]);
+    const [userPerformanceData, setUserPerformanceData] = useState({});
 
     async function fetchPerformanceData() {
         setIsLoaded(false)
@@ -112,7 +112,7 @@ function Home() {
                 );
             } else {
                 const { data } = await response.json()
-                setUserPerformanceData(data.data)
+                setUserPerformanceData(data)
             }
         } catch (error) {
             console.log(error.message)

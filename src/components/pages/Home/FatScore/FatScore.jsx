@@ -14,7 +14,7 @@ import './FatScore.css'
 
 
 function FatScore({ data }) {
-    const userScore = data * 100 // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
+    const userScore = data * 100
 
     if (data !== undefined) {
         return (
@@ -65,7 +65,7 @@ function FatScore({ data }) {
 }
 
 FatScore.propTypes = {
-    data: PropTypes.number.isRequired
+    data: PropTypes.number
 }
 
 export default FatScore;
