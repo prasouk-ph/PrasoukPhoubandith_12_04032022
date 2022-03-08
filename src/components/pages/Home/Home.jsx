@@ -145,10 +145,15 @@ function Home() {
 
                 <main className='home-main'>
                     <div className="charts-container">
-                        <ActivitesChart data={userActivitiesData} />
-                        <SessionChart data={userSessionsData} />
-                        <PerformanceChart data={userPerformanceData} />
-                        <FatScore data={userData.todayScore} />
+                        <div className="main-chart">
+                            <ActivitesChart data={userActivitiesData} />
+                        </div>
+                        <div className="secondaries-chart">
+                            <SessionChart data={userSessionsData} />
+                            <PerformanceChart data={userPerformanceData} />
+                            <FatScore data={userData.todayScore} />
+                        </div>
+
                     </div>
 
                     <div className="nutritional-intake">

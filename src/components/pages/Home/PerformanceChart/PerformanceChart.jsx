@@ -18,7 +18,7 @@ function PerformanceChart({ data }) {
         return (
             <RadarChart
                 style={{ backgroundColor: "#282D30", borderRadius: 5 }}
-                outerRadius={90}
+                outerRadius={70}
                 width={258}
                 height={263}
                 data={data.data}
