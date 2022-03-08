@@ -36,6 +36,9 @@ const styleToolTip = {
     alignItems: "center"
 }
 
+function getTickName(dayValue) {
+    return new Date(dayValue).getDate() // getDate allows to get day number
+}
 
 
 function ActivitiesChart({ data }) {
@@ -72,7 +75,7 @@ function ActivitiesChart({ data }) {
                     
                     <Tooltip wrapperStyle={styleToolTip} content={<ActivitesTooltip />} />
                     
-                    <XAxis dataKey="day" tickLine={false} tickMargin={16} stroke="#9B9EAC" />
+                    <XAxis dataKey="day" tickLine={false} tickMargin={16} stroke="#9B9EAC" tickFormatter={getTickName} />
                     
                     <YAxis orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC" />
                     
