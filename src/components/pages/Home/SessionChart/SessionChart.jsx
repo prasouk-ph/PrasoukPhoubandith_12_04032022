@@ -32,6 +32,19 @@ const styleToolTip = {
     alignItems: "center"
 }
 
+function getTickName(tickIndex) {
+    const dayName = {
+        1: "L",
+        2: "M",
+        3: "M",
+        4: "J",
+        5: "V",
+        6: "S",
+        7: "D"
+    }
+    return dayName[tickIndex]
+}
+
 
 function SessionChart({ data }) {
     if (data.length > 0) {
@@ -48,7 +61,7 @@ function SessionChart({ data }) {
                         top: 60, right: 20, left: 20, bottom: 13
                     }}
                 >
-                    <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} />
+                    <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName}/>
 
                     <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
                     
@@ -59,11 +72,12 @@ function SessionChart({ data }) {
     } else { return (<p>Chargement...</p>) }
 }
 
-SessionTooltip.propTypes = {
+SessionChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({ // shape allows to check object content type
-        day: PropTypes.string.isRequired,
-        sessionLength: PropTypes.number.isRequired,
-      }))}
+                day: PropTypes.number.isRequired,
+                sessionLength: PropTypes.number.isRequired,
+            }))
+}
 
 export default SessionChart;
 

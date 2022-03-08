@@ -7,7 +7,6 @@ import {
 } from "recharts";
 import PropTypes from 'prop-types'
 
-
 function PerformanceChart({ data }) {
     const kindName = data.kind
 
