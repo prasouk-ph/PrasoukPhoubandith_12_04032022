@@ -1,3 +1,23 @@
 .notfound {
-    margin-left: 117px;
+    margin: 50px 50px 50px 117px;
+    padding-left: 107px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+}
+
+.notfound p:nth-child(1) {
+    font-size: 50px;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.notfound p:nth-child(2) {
+    font-size: 40px;
+}
+
+.link {
+    font-size: 30px;
+    color: #ff0000;
 }

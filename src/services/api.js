@@ -1,66 +1,73 @@
-export default async function fetchData() {
-        try {
-            const response = await fetch(`http://localhost:3000/user/12`)
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                );
-            } else {
-                const { data } = await response.json()
-                return (data)
-            }
-        } catch (error) {
-            console.log(error.message)
+async function fetchUserData() {
+    try {
+        const response = await fetch(`http://localhost:3000/user/12`)
+        if (!response.ok) {
+            throw new Error(
+                `This is an HTTP error: The status is ${response.status}`
+            );
+        } else {
+            const { data } = await response.json()
+            // setUserData(data)
+            // console.log(data)
         }
+    } catch (error) {
+        console.log(error.message)
+        // setError(true)
     }
+}
 
 
-// import { useState, useEffect } from "react";
+async function fetchActivitiesData() {
+    try {
+        const response = await fetch(`http://localhost:3000/user/12/activity`)
+        if (!response.ok) {
+            throw new Error(
+                `This is an HTTP error: The status is ${response.status}`
+            );
+        } else {
+            const { data } = await response.json()
+            // setUserActivitiesData(data.sessions)
+            // console.log(data)
+        }
+    } catch (error) {
+        console.log(error.message)
+        // setError(true)
+    }
+}
 
 
-// function MyComponent() {
-//     const [error, setError] = useState(null);
-//     const [isLoaded, setIsLoaded] = useState(false);
-//     const [data, setData] = useState([]);
+async function fetchSessionsData() {
+    try {
+        const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
+        if (!response.ok) {
+            throw new Error(
+                `This is an HTTP error: The status is ${response.status}`
+            );
+        } else {
+            const { data } = await response.json()
+            // setUserSessionsData(data.sessions)
+        }
+    } catch (error) {
+        console.log(error.message)
+        // setError(true)
+    }
+}
 
-//     async function fetchData() {
-//         setIsLoaded(true)
-//         try {
-//             const response = await fetch(`http://localhost:3000/user/12`)
-//             if (!response.ok) {
-//                 throw new Error(
-//                     `This is an HTTP error: The status is ${response.status}`
-//                 );
-//             } else {
-//                 const { data } = await response.json()
-//                 setData(data)
-//             }
-//         } catch (error) {
-//             console.log(error.message)
-//             setError(true)
-//         }
-//         finally {
-//             setIsLoaded(true)
-//         }
-//       }
-    
-  
-//     // Remarque : le tableau vide de dépendances [] indique
-//     // que useEffect ne s’exécutera qu’une fois, un peu comme
-//     // componentDidMount()
-//     useEffect(() => {
-//         fetchData()
-//     }, [])
-  
-//     if (error) {
-//       return <p>Echec chargement</p>;
-//     } else if (!isLoaded) {
-//       return <p>Chargement...</p>;
-//     } else {
-//       return (
-//           <p>{data.id}</p>
-//       );
-//     }
-// }
-  
-// export default MyComponent
+
+async function fetchPerformanceData() {
+    try {
+        const response = await fetch(`http://localhost:3000/user/12/performance`)
+        if (!response.ok) {
+            throw new Error(
+                `This is an HTTP error: The status is ${response.status}`
+            );
+        } else {
+            const { data } = await response.json()
+            // setUserPerformanceData(data.data)
+        }
+    } catch (error) {
+        console.log(error.message)
+        // setError(true)
+    }
+}
+
