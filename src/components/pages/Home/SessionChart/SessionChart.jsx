@@ -58,14 +58,14 @@ function SessionChart({ data }) {
                     height={263}
                     data={data}
                     margin={{
-                        top: 60, right: 20, left: 20, bottom: 13
+                        top: 80, right: 20, left: 20, bottom: 13
                     }}
                 >
                     <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName}/>
 
                     <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
                     
-                    <Line type="monotone" dataKey="sessionLength" stroke="white" dot={false} />
+                    <Line type="basis" connectNulls="true" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
                 </LineChart>
             </div>
         );

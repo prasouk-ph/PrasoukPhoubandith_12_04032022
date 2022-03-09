@@ -29,4 +29,5 @@
     font-size: 12px;
     font-weight: 500;
     writing-mode: vertical-lr;
+    transform: rotate(180deg);
 }

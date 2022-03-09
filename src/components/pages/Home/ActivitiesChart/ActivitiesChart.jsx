@@ -77,7 +77,7 @@ function ActivitiesChart({ data }) {
                     
                     <XAxis dataKey="day" tickLine={false} tickMargin={16} stroke="#9B9EAC" tickFormatter={getTickName} />
                     
-                    <YAxis orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC" />
+                    <YAxis dataKey={data.kilogram} orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC"  />
                     
                     <Bar
                         dataKey="kilogram"
