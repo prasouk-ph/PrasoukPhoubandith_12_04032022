@@ -1,4 +1,4 @@
-async function fetchUserData() {
+async function getUserInfo() {
     try {
         const response = await fetch(`http://localhost:3000/user/12`)
         if (!response.ok) {
@@ -7,17 +7,16 @@ async function fetchUserData() {
             );
         } else {
             const { data } = await response.json()
-            // setUserData(data)
-            // console.log(data)
+            return data
         }
     } catch (error) {
         console.log(error.message)
-        // setError(true)
+        return "HTTP error"
     }
 }
 
 
-async function fetchActivitiesData() {
+async function getActivitiesData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/activity`)
         if (!response.ok) {
@@ -26,17 +25,16 @@ async function fetchActivitiesData() {
             );
         } else {
             const { data } = await response.json()
-            // setUserActivitiesData(data.sessions)
-            // console.log(data)
+            return data.sessions
         }
     } catch (error) {
         console.log(error.message)
-        // setError(true)
+        return "HTTP error"
     }
 }
 
 
-async function fetchSessionsData() {
+async function getSessionsData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
         if (!response.ok) {
@@ -45,16 +43,16 @@ async function fetchSessionsData() {
             );
         } else {
             const { data } = await response.json()
-            // setUserSessionsData(data.sessions)
+            return data.sessions
         }
     } catch (error) {
         console.log(error.message)
-        // setError(true)
+        return "HTTP error"
     }
 }
 
 
-async function fetchPerformanceData() {
+async function getPerformanceData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/performance`)
         if (!response.ok) {
@@ -63,11 +61,12 @@ async function fetchPerformanceData() {
             );
         } else {
             const { data } = await response.json()
-            // setUserPerformanceData(data.data)
+            return data
         }
     } catch (error) {
         console.log(error.message)
-        // setError(true)
+        return "HTTP error"
     }
 }
 
+export { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData }

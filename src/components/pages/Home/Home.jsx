@@ -4,115 +4,41 @@ import SessionChart from './SessionChart/SessionChart'
 import PerformanceChart from './PerformanceChart/PerformanceChart'
 import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
-// import MyComponent from '../../../services/UserService'
-// import fetchData from '../../../services/api'
+import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData} from '../../../services/userData'
 import { useState, useEffect } from "react";
 
 
 function Home() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [userData, setUserData] = useState({});
-
-    async function fetchUserData() {
-        setIsLoaded(false)
-        try {
-            const response = await fetch(`http://localhost:3000/user/12`)
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                );
-            } else {
-                const { data } = await response.json()
-                setUserData(data)
-                // console.log(data)
-            }
-        } catch (error) {
-            console.log(error.message)
-            setError(true)
-        }
-        finally {
-            setIsLoaded(true)
-        }
-    }
-
-    const userName = userData?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
-    
-    useEffect(() => {
-        fetchUserData()
-    }, [])
-    
-
+    const [userInfo, setUserInfo] = useState({});
     const [userActivitiesData, setUserActivitiesData] = useState([]);
-
-    async function fetchActivitiesData() {
-        setIsLoaded(false)
-        try {
-            const response = await fetch(`http://localhost:3000/user/12/activity`)
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                );
-            } else {
-                const { data } = await response.json()
-                setUserActivitiesData(data.sessions)
-                // console.log(data)
-            }
-        } catch (error) {
-            console.log(error.message)
-            setError(true)
-        }
-        finally {
-            setIsLoaded(true)
-        }
-    }
-    
-    useEffect(() => {
-        fetchActivitiesData()
-    }, [])
-
-
     const [userSessionsData, setUserSessionsData] = useState([]);
-
-    async function fetchSessionsData() {
-        setIsLoaded(false)
-        try {
-            const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                );
-            } else {
-                const { data } = await response.json()
-                setUserSessionsData(data.sessions)
-            }
-        } catch (error) {
-            console.log(error.message)
-            setError(true)
-        }
-        finally {
-            setIsLoaded(true)
-        }
-    }
-    
-    useEffect(() => {
-        fetchSessionsData()
-    }, [])
-
-    
     const [userPerformanceData, setUserPerformanceData] = useState({});
+    const userName = userInfo?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
 
-    async function fetchPerformanceData() {
+
+    async function getUserData() {
         setIsLoaded(false)
+        
         try {
-            const response = await fetch(`http://localhost:3000/user/12/performance`)
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                );
-            } else {
-                const { data } = await response.json()
-                setUserPerformanceData(data)
+            const userInfoResponse = await getUserInfo()
+            setUserInfo(userInfoResponse)
+
+            const userActivitiesDataResponse = await getActivitiesData()
+            setUserActivitiesData(userActivitiesDataResponse)
+
+            const userSessionsDataResponse = await getSessionsData()
+            setUserSessionsData(userSessionsDataResponse)
+
+            const userPerformanceDataResponse = await getPerformanceData()
+            setUserPerformanceData(userPerformanceDataResponse)
+
+            if (userInfoResponse === "HTTP error" 
+            || userActivitiesDataResponse === "HTTP error" 
+            || userSessionsDataResponse === "HTTP error" 
+            || userPerformanceDataResponse === "HTTP error") {
+                throw new Error(`HTTP error !`)
             }
         } catch (error) {
             console.log(error.message)
@@ -120,13 +46,15 @@ function Home() {
         }
         finally {
             setIsLoaded(true)
+            // console.log(userPerformanceData)
         }
     }
+
     
     useEffect(() => {
-        fetchPerformanceData()
+        getUserData()
     }, [])
-
+    
     
     if (!isLoaded) {
         return (<p className='home'>Chargement...</p>)
@@ -151,16 +79,16 @@ function Home() {
                         <div className="secondaries-chart">
                             <SessionChart data={userSessionsData} />
                             <PerformanceChart data={userPerformanceData} />
-                            <FatScoreChart data={userData.todayScore} />
+                            <FatScoreChart data={userInfo.todayScore} />
                         </div>
 
                     </div>
 
                     <div className="nutritional-intake">
-                        <NutrientInfo nutrientType='calorie' data={userData.keyData} />
-                        <NutrientInfo nutrientType='protein' data={userData.keyData} />
-                        <NutrientInfo nutrientType='carbohydrate' data={userData.keyData} />
-                        <NutrientInfo nutrientType='lipid' data={userData.keyData} />
+                        <NutrientInfo nutrientType='calorie' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='protein' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='carbohydrate' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='lipid' data={userInfo.keyData} />
                     </div>
                 </main>
             </div>
