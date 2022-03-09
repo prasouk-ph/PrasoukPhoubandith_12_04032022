@@ -2,7 +2,7 @@ import './Home.css';
 import ActivitesChart from './ActivitiesChart/ActivitiesChart'
 import SessionChart from './SessionChart/SessionChart'
 import PerformanceChart from './PerformanceChart/PerformanceChart'
-import FatScore from './FatScore/FatScore'
+import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
 // import MyComponent from '../../../services/UserService'
 // import fetchData from '../../../services/api'
@@ -151,7 +151,7 @@ function Home() {
                         <div className="secondaries-chart">
                             <SessionChart data={userSessionsData} />
                             <PerformanceChart data={userPerformanceData} />
-                            <FatScore data={userData.todayScore} />
+                            <FatScoreChart data={userData.todayScore} />
                         </div>
 
                     </div>
