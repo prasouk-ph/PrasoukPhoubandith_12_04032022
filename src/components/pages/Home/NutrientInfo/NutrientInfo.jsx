@@ -8,14 +8,18 @@ import ProteinsIcon from '../../../../assets/protein-icon.png'
 import CarbsIcon from '../../../../assets/carbs-icon.png'
 import FatIcon from '../../../../assets/fat-icon.png'
 
-
+/**
+ * Create an info box
+ * @param { String } nutrientType
+ * @param { Object } data - user data
+ * @returns { HTMLElement }
+ */
 function NutrientInfo({nutrientType, data}) {
     const [nutrientName, setNutrientName] = useState('Chargement...')
     const [nutrientQuantity, setNutrientQuantity] = useState('Chargement...')
     const [nutrientUnit, setNutrientUnit] = useState('Chargement...')
     const [icon, setIcon] = useState('Chargement...')
 
-    
     function getNutrientData() {
         if (data !== undefined ) {
             if (nutrientType === 'calorie') {

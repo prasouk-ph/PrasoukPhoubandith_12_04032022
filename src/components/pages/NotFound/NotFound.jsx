@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import './NotFound.css';
 
+/**
+ * Create a component
+ * @returns { HTMLElement }
+ */
 function NotFound() {
     return (
         <div className='notfound'>

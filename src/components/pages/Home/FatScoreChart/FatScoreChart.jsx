@@ -7,7 +7,11 @@ import {
 import PropTypes from 'prop-types'
 import './FatScoreChart.css'
 
-
+/**
+ * Create a radial chart from user fat score
+ * @param { Number } data - user data
+ * @returns { HTMLElement }
+ */
 function FatScore({ data }) {
     const userScore = data * 100
 

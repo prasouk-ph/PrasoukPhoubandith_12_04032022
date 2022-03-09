@@ -7,7 +7,10 @@ import NutrientInfo from './NutrientInfo/NutrientInfo'
 import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData} from '../../../services/userData'
 import { useState, useEffect } from "react";
 
-
+/**
+ * Create a component
+ * @returns { HTMLElement }
+ */
 function Home() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +19,6 @@ function Home() {
     const [userSessionsData, setUserSessionsData] = useState([]);
     const [userPerformanceData, setUserPerformanceData] = useState({});
     const userName = userInfo?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
-
 
     async function getUserData() {
         setIsLoaded(false)
@@ -97,3 +99,4 @@ function Home() {
 }
 
 export default Home;
+

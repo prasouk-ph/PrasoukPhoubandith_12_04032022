@@ -1,3 +1,7 @@
+/**
+ * Get user info from api
+ * @returns { Object }
+ */
 async function getUserInfo() {
     try {
         const response = await fetch(`http://localhost:3000/user/12`)
@@ -16,6 +20,10 @@ async function getUserInfo() {
 }
 
 
+/**
+ * Get user activities from api
+ * @returns { Object }
+ */
 async function getActivitiesData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/activity`)
@@ -34,6 +42,10 @@ async function getActivitiesData() {
 }
 
 
+/**
+ * Get user sessions from api
+ * @returns { Object }
+ */
 async function getSessionsData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
@@ -52,6 +64,10 @@ async function getSessionsData() {
 }
 
 
+/**
+ * Get user performance from api
+ * @returns { Object }
+ */
 async function getPerformanceData() {
     try {
         const response = await fetch(`http://localhost:3000/user/12/performance`)

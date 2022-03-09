@@ -7,9 +7,19 @@ import {
 } from "recharts";
 import PropTypes from 'prop-types'
 
+/**
+ * Format tooltip content
+ * @param { Object } data - user performance data
+ * @returns { HTMLElement }
+ */
 function PerformanceChart({ data }) {
     const kindName = data.kind
 
+    /**
+     * Format tooltip content
+     * @param { Number } tickIndex 
+     * @returns { String }
+     */
     function getTickName(tickIndex) {
         return kindName[tickIndex]
     }

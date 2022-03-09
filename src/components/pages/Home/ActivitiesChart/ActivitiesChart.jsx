@@ -10,6 +10,12 @@ import {
 import PropTypes from 'prop-types'
 import './ActivitiesChart.css'
 
+/**
+ * Format tooltip content
+ * @param { Boolean } active - the state of tooltip
+ * @param { Array.<Object> } payload - contains attributes and values to display
+ * @returns { ?HTMLElement }
+ */
 const ActivitesTooltip = ({ active, payload }) => {
     if (active) {
       return (
@@ -36,11 +42,21 @@ const styleToolTip = {
     alignItems: "center"
 }
 
+/**
+ * Format day name
+ * @param { String } dayValue 
+ * @returns { Number }
+ */
 function getTickName(dayValue) {
     return new Date(dayValue).getDate() // getDate allows to get day number
 }
 
-
+/**
+ * Create an info box
+ * @param { String } nutrientType
+ * @param { Object }  data - user activities data
+ * @returns { HTMLElement }
+ */
 function ActivitiesChart({ data }) {
     if (data.length > 0) {
         return (

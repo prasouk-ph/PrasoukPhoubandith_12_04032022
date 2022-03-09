@@ -8,7 +8,14 @@ import {
 import PropTypes from 'prop-types'
 import './SessionChart.css'
 
+/**
+ * Format tooltip content
+ * @param { Boolean } active - the state of tooltip
+ * @param { Array.<Object> } payload - contains attributes and values to display
+ * @returns { ?HTMLElement }
+ */
 const SessionTooltip = ({ active, payload }) => {
+    console.log(payload)
     if (active) {
       return (
         <div className="session-tooltip-container">
@@ -32,6 +39,11 @@ const styleToolTip = {
     alignItems: "center"
 }
 
+/**
+ * Format day name
+ * @param { Number } tickIndex 
+ * @returns { String }
+ */
 function getTickName(tickIndex) {
     const dayName = {
         1: "L",
@@ -45,7 +57,11 @@ function getTickName(tickIndex) {
     return dayName[tickIndex]
 }
 
-
+/**
+ * Create a chart component
+ * @param { Array.<Object> } data - user session data
+ * @returns { HTMLElement }
+ */
 function SessionChart({ data }) {
     if (data.length > 0) {
         return (
@@ -80,4 +96,3 @@ SessionChart.propTypes = {
 }
 
 export default SessionChart;
-

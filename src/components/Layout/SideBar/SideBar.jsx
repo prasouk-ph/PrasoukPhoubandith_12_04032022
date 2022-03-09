@@ -4,6 +4,10 @@ import iconYoga from '../../../assets/yoga-icon.png'
 import iconCycling from '../../../assets/cycling-icon.png'
 import iconBodybuilding from '../../../assets/bodybuilding-icon.png'
 
+/**
+ * Create a component
+ * @returns { HTMLElement }
+ */
 function SideBar() {
     return (
         <div className='sidebar'>
