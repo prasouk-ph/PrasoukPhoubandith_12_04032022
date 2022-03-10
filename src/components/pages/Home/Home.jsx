@@ -5,6 +5,7 @@ import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
 import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData} from '../../../services/userData'
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import './Home.css';
 
 /**
@@ -12,6 +13,7 @@ import './Home.css';
  * @returns { HTMLElement }
  */
 function Home() {
+    const { id } = useParams(); // current page ID
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [userInfo, setUserInfo] = useState({});
@@ -20,20 +22,19 @@ function Home() {
     const [userPerformanceData, setUserPerformanceData] = useState({});
     const userName = userInfo?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
 
-    async function getUserData() {
+    async function getUserData(id) {
         setIsLoaded(false)
-        
         try {
-            const userInfoResponse = await getUserInfo()
+            const userInfoResponse = await getUserInfo(id)
             setUserInfo(userInfoResponse)
 
-            const userActivitiesDataResponse = await getActivitiesData()
+            const userActivitiesDataResponse = await getActivitiesData(id)
             setUserActivitiesData(userActivitiesDataResponse)
 
-            const userSessionsDataResponse = await getSessionsData()
+            const userSessionsDataResponse = await getSessionsData(id)
             setUserSessionsData(userSessionsDataResponse)
 
-            const userPerformanceDataResponse = await getPerformanceData()
+            const userPerformanceDataResponse = await getPerformanceData(id)
             setUserPerformanceData(userPerformanceDataResponse)
 
             if (userInfoResponse === "HTTP error" 
@@ -54,7 +55,8 @@ function Home() {
 
     
     useEffect(() => {
-        getUserData()
+        getUserData(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     

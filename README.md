@@ -49,6 +49,7 @@ Follow instructions on :
 ## How to run
 
 The front-end need the back-end API, to use it, you need to :
+
 1- Launch the back-end first with: `npm start`
 It will run in port 3000
 

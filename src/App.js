@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import Layout from './components/Layout/Layout'
 import Home from './components/pages/Home/Home'
 import NotFoundPage from './components/pages/NotFound/NotFound'
@@ -9,7 +9,8 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
+                    <Route index element={<Navigate to="/12"></Navigate>} /> {/* by default, redirect to user(12) page */}
+                    <Route path="/:id" element={<Home />} />
                     <Route path="*" element={<NotFoundPage />}/>
                 </Route>
             </Routes>

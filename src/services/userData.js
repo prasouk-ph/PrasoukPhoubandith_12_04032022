@@ -2,9 +2,9 @@
  * Get user info from api
  * @returns { Object }
  */
-async function getUserInfo() {
+async function getUserInfo(userId) {
     try {
-        const response = await fetch(`http://localhost:3000/user/12`)
+        const response = await fetch(`http://localhost:3000/user/${userId}`)
         if (!response.ok) {
             throw new Error(
                 `This is an HTTP error: The status is ${response.status}`
@@ -24,9 +24,9 @@ async function getUserInfo() {
  * Get user activities from api
  * @returns { Object }
  */
-async function getActivitiesData() {
+async function getActivitiesData(userId) {
     try {
-        const response = await fetch(`http://localhost:3000/user/12/activity`)
+        const response = await fetch(`http://localhost:3000/user/${userId}/activity`)
         if (!response.ok) {
             throw new Error(
                 `This is an HTTP error: The status is ${response.status}`
@@ -46,9 +46,9 @@ async function getActivitiesData() {
  * Get user sessions from api
  * @returns { Object }
  */
-async function getSessionsData() {
+async function getSessionsData(userId) {
     try {
-        const response = await fetch(`http://localhost:3000/user/12/average-sessions`)
+        const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
         if (!response.ok) {
             throw new Error(
                 `This is an HTTP error: The status is ${response.status}`
@@ -68,9 +68,9 @@ async function getSessionsData() {
  * Get user performance from api
  * @returns { Object }
  */
-async function getPerformanceData() {
+async function getPerformanceData(userId) {
     try {
-        const response = await fetch(`http://localhost:3000/user/12/performance`)
+        const response = await fetch(`http://localhost:3000/user/${userId}/performance`)
         if (!response.ok) {
             throw new Error(
                 `This is an HTTP error: The status is ${response.status}`
