@@ -16,22 +16,24 @@ The application is in progress, the navigation doesn't work and the resolution s
 
 -   Javascript
 -   CSS
--   [Npm v8.1.3] (https://www.npmjs.com/package/npm)
--   [React v17.0.2] (https://fr.reactjs.org/)
--   [React-router-dom v6.2.2] (https://reactrouter.com/)
--   [Recharts v2.1.9] (https://recharts.org/en-US/)
--   [Prop-types v15.8.1] (https://www.npmjs.com/package/prop-types)
+-   [Npm] (https://www.npmjs.com/package/npm) v8.1.3
+-   [React] (https://fr.reactjs.org/) v17.0.2
+-   [React-router-dom] (https://reactrouter.com/) v6.2.2
+-   [Recharts] (https://recharts.org/en-US/) v2.1.9
+-   [Prop-types] (https://www.npmjs.com/package/prop-types) v15.8.1
 
 ## Installation
 
 To be able to use the application, you will need to install the back-end and the front-end
 
--   Front-end
+### Front-end
+
     1- Install npm on your system : `npm install`
 
     2- Clone this repository : `git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
 
--   Back-end
+### Back-end
+
     Follow instructions on : https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 
 ## How to run
