@@ -10,21 +10,46 @@ The charts was made with Recharts
 
 The application is in progress, the navigation doesn't work and the resolution should be over 1024\*780px
 
-![alt text](screenshots/app-screenshot.png "Application screenshot")
+<img src='https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022/blob/master/screenshot/app-screenshot.png' alt="screenshot"/>
 
 ## Technologies and dependencies
 
 -   Javascript
 -   CSS
--   Npm (8.1.3)
--   React (v17.0.2)
--   React-router-dom (6.2.2)
--   Recharts (2.1.9)
--   Prop-types (15.8.1)
+-   [Npm (8.1.3)] (https://www.npmjs.com/package/npm)
+-   [React (v17.0.2)] (https://fr.reactjs.org/)
+-   [React-router-dom (6.2.2)] (https://reactrouter.com/)
+-   [Recharts (2.1.9)] (https://recharts.org/en-US/)
+-   [Prop-types (15.8.1)] (https://www.npmjs.com/package/prop-types)
 
 ## Installation
 
+To be able to use the application, you will need to install the back-end and the front-end
+
+-   Front-end
+    1- Install npm on your system
+
+    ### npm install
+
+    2- Clone this repository
+
+    ### git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git
+
+-   Back-end
+    Follow instructions on : https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+
 ## How to run
+
+The front-end need the back-end API, to use it, you need to :
+1- Launch the back-end with:
+
+### npm start
+
+2- Launch the front-end with:
+
+### npm start
+
+You can now use the URL parameter id 12 or 18
 
 ## Authors
 
