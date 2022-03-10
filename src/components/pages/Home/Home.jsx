@@ -1,4 +1,3 @@
-import './Home.css';
 import ActivitesChart from './ActivitiesChart/ActivitiesChart'
 import SessionChart from './SessionChart/SessionChart'
 import PerformanceChart from './PerformanceChart/PerformanceChart'
@@ -6,6 +5,7 @@ import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
 import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData} from '../../../services/userData'
 import { useState, useEffect } from "react";
+import './Home.css';
 
 /**
  * Create a component
@@ -61,7 +61,7 @@ function Home() {
     if (!isLoaded) {
         return (<p className='home'>Chargement...</p>)
     } else if (error) {
-        return (<p className='home'>Erreur !</p>)
+        return (<p className='home'>Erreur lors du chargement des données !</p>)
     } else {
         return (
             <div className='home'>

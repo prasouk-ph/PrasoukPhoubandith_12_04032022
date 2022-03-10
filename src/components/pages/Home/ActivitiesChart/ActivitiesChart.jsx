@@ -5,7 +5,8 @@ import {
     XAxis,
     YAxis,
     CartesianGrid,
-    Tooltip
+    Tooltip,
+    ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
 import './ActivitiesChart.css'
@@ -60,7 +61,7 @@ function getTickName(dayValue) {
 function ActivitiesChart({ data }) {
     if (data.length > 0) {
         return (
-            <div className="activities-chart">
+            <div className="activities-chart" >
                 <div className="chart-header">
                     <h2 className="chart-title">Activité quotidienne</h2>
                     
@@ -70,40 +71,40 @@ function ActivitiesChart({ data }) {
                     </ul>
                 </div>
         
-                <BarChart
-                    width={835}
-                    height={320}
-                    data={data}
-                    barSize={7}
-                    barCategoryGap={54}
-                    barGap={8}
-                    margin={{
-                        top: 82,
-                        right: 49,
-                        left: 43,
-                        bottom: 23
-                    }}>
+                <ResponsiveContainer>
+                    <BarChart
+                        data={data}
+                        barSize={7}
+                        barCategoryGap={54}
+                        barGap={8}
+                        margin={{
+                            top: 82,
+                            right: 49,
+                            left: 43,
+                            bottom: 23
+                        }}>
+                            
+                        <CartesianGrid
+                            strokeDasharray="2"
+                            vertical={false}
+                        />
                         
-                    <CartesianGrid
-                        strokeDasharray="2"
-                        vertical={false}
-                    />
-                    
-                    <Tooltip wrapperStyle={styleToolTip} content={<ActivitesTooltip />} />
-                    
-                    <XAxis dataKey="day" tickLine={false} tickMargin={16} stroke="#9B9EAC" tickFormatter={getTickName} />
-                    
-                    <YAxis dataKey={data.kilogram} orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC"  />
-                    
-                    <Bar
-                        dataKey="kilogram"
-                        fill="#282D30"
-                        radius={[10, 10, 0, 0]}
-                        name="Poids (kg)"
-                    />
-                    
-                    <Bar dataKey="calories" fill="#E60000" radius={[10, 10, 0, 0]} name="Calories brûlées (kCal)" />
-                </BarChart>
+                        <Tooltip wrapperStyle={styleToolTip} content={<ActivitesTooltip />} />
+                        
+                        <XAxis dataKey="day" tickLine={false} tickMargin={16} stroke="#9B9EAC" tickFormatter={getTickName} />
+                        
+                        <YAxis dataKey={data.kilogram} orientation="right" tickLine={false} axisLine={false} tickMargin={45} stroke="#9B9EAC"  />
+                        
+                        <Bar
+                            dataKey="kilogram"
+                            fill="#282D30"
+                            radius={[10, 10, 0, 0]}
+                            name="Poids (kg)"
+                        />
+                        
+                        <Bar dataKey="calories" fill="#E60000" radius={[10, 10, 0, 0]} name="Calories brûlées (kCal)" />
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         );
     } else { return (<p>Chargement...</p>) }

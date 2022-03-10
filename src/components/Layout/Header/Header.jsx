@@ -9,9 +9,7 @@ import './Header.css';
 function Header() {
     return (
         <div className='header'>
-            <div>
-                <img className='header-logo' src={logo} alt="logo" />
-            </div>
+            <img className='header-logo' src={logo} alt="logo" />
 
             <nav className='main-menu'>
                 <Link to="/">Accueil</Link>

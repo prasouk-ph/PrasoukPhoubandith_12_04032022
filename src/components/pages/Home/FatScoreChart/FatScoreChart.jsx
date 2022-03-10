@@ -2,7 +2,8 @@ import React from "react";
 import {
     RadialBarChart,
     RadialBar,
-    PolarAngleAxis
+    PolarAngleAxis,
+    ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
 import './FatScoreChart.css'
@@ -22,54 +23,56 @@ function FatScore({ data }) {
 
     if (data !== undefined) {
         return (
-                <RadialBarChart 
-                    width={258} 
-                    height={263} 
-                    innerRadius="70%" 
-                    outerRadius="80%" 
-                    data={formatedScore} 
-                    startAngle={-270} 
-                    endAngle={180}
-                    style={{ backgroundColor: "#fbfbfb", borderRadius: 5 }}
-                >
-                    <text
-                        x={24}
-                        y={30}
-                        className="fatscore-title"
+            <div className="fatscore-chart">
+                <ResponsiveContainer>
+                    <RadialBarChart 
+                        innerRadius="70%" 
+                        outerRadius="80%" 
+                        data={formatedScore} 
+                        startAngle={-270} 
+                        endAngle={180}
+                        style={{ backgroundColor: "#fbfbfb", borderRadius: 5 }}
                     >
-                        Score
-                    </text>
-                    
-                    <PolarAngleAxis type="number" domain={[0, 125]} tick={false} /> {/* domain 125 allow better accuracy when value is near max */}
+                        <text
+                            x={24}
+                            y={30}
+                            className="fatscore-title"
+                        >
+                            Score
+                        </text>
+                        
+                        <PolarAngleAxis type="number" domain={[0, 125]} tick={false} /> {/* domain 125 allow better accuracy when value is near max */}
 
-                    <RadialBar cornerRadius={15} background clockWise={true} dataKey="value" />
-                    <text
-                        x={"41%"}
-                        y={"45%"}
-                        className="fatscore"
-                    >
-                        {userScore}%
-                    </text>
+                        <RadialBar cornerRadius={15} background clockWise={true} dataKey="value" />
+                        <text
+                            x={"41%"}
+                            y={"45%"}
+                            className="fatscore"
+                        >
+                            {userScore}%
+                        </text>
+                        
+                        <text
+                            x={"40%"}
+                            y={"55%"}
+                            className="fatscore-text"
+                            fill="#74798C"
+                        >
+                            de votre
+                        </text>
+                        
+                        <text
+                            x={"40%"}
+                            y={"65%"}
+                            className="fatscore-text"
+                            fill="#74798C"
+                        >
+                            objectif
+                        </text>
                     
-                    <text
-                        x={"40%"}
-                        y={"55%"}
-                        className="fatscore-text"
-                        fill="#74798C"
-                    >
-                        de votre
-                    </text>
-                    
-                    <text
-                        x={"40%"}
-                        y={"65%"}
-                        className="fatscore-text"
-                        fill="#74798C"
-                    >
-                        objectif
-                    </text>
-                
-                </RadialBarChart>
+                    </RadialBarChart>
+                </ResponsiveContainer>
+            </div>
         );
     } else { return (<p>Chargement...</p>) }
 }

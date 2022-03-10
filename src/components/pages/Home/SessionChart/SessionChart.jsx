@@ -3,7 +3,8 @@ import {
     LineChart,
     Line,
     XAxis,
-    Tooltip
+    Tooltip,
+    ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
 import './SessionChart.css'
@@ -15,7 +16,6 @@ import './SessionChart.css'
  * @returns { ?HTMLElement }
  */
 const SessionTooltip = ({ active, payload }) => {
-    console.log(payload)
     if (active) {
       return (
         <div className="session-tooltip-container">
@@ -68,21 +68,23 @@ function SessionChart({ data }) {
             <div className="session-chart">
                 <h2 className="session-chart-title">Durée moyenne des sessions</h2>
 
-                <LineChart
-                    className="session-chart"
-                    width={258}
-                    height={263}
-                    data={data}
-                    margin={{
-                        top: 80, right: 20, left: 20, bottom: 13
-                    }}
-                >
-                    <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName}/>
+                <ResponsiveContainer>
+                    <LineChart
+                        className="session-chart"
+                        width={258}
+                        height={263}
+                        data={data}
+                        margin={{
+                            top: 80, right: 20, left: 20, bottom: 13
+                        }}
+                    >
+                        <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName}/>
 
-                    <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
-                    
-                    <Line type="basis" connectNulls="true" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
-                </LineChart>
+                        <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
+                        
+                        <Line type="basis" connectNulls="true" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         );
     } else { return (<p>Chargement...</p>) }

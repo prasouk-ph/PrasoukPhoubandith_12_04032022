@@ -12,3 +12,8 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+.fatscore-chart {
+    width: 17.917vw;
+    aspect-ratio: 1 / 1;
+}
