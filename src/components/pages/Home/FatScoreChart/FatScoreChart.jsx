@@ -34,8 +34,8 @@ function FatScore({ data }) {
                         style={{ backgroundColor: "#fbfbfb", borderRadius: 5 }}
                     >
                         <text
-                            x={24}
-                            y={30}
+                            x={"10%"}
+                            y={"15%"}
                             className="fatscore-title"
                         >
                             Score

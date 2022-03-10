@@ -5,22 +5,22 @@
     background: #fbfbfb;
     display: flex;
     align-items: center;
-    padding-left: 32px;
+    padding-left: 2.222vw;
 }
 
 .nutrient-icon {
-    width: 60px;
-    height: 60px;
+    width: 4.167vw;
+    height: 4.167vw;
     margin-right: 26px;
 }
 
 .nutrient-quantity {
-    font-size: 20px;
+    font-size: 1.389vw;
     font-weight: 700;
 }
 
 .nutrient-name {
     color: #74798c;
-    font-size: 14px;
+    font-size: 0.972vw;
     font-weight: 500;
 }

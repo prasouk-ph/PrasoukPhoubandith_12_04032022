@@ -32,11 +32,11 @@ function PerformanceChart({ data }) {
                 <ResponsiveContainer>
                     <RadarChart
                         style={{ backgroundColor: "#282D30", borderRadius: 5 }}
-                        outerRadius={70}
+                        outerRadius={'60%'}
                         data={data.data}
                     >
                         <PolarGrid stroke="white" />
-                        <PolarAngleAxis style={{ fontSize: 12 }} stroke="white" dataKey="kind" tickLine={false} tickFormatter={getTickName}
+                        <PolarAngleAxis style={{ fontSize: '0.833vw' }} stroke="white" dataKey="kind" tickLine={false} tickFormatter={getTickName}
         />
                         <Radar name="user" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
                     </RadarChart>

@@ -1,5 +1,5 @@
 .home {
-    margin: 0 117px;
+    margin: 0 8.125vw;
     padding: 6.640625vh 7.431vw;
 }
 
@@ -10,7 +10,7 @@
 
 .greeting-message {
     display: flex;
-    margin-bottom: 41px;
+    margin-bottom: 4.00390625vh;
     font-weight: 500;
 }
 
@@ -32,7 +32,7 @@
 
 .cheering-message {
     color: black;
-    margin: 0 0 77px 0;
+    margin: 0 0 7.51953125vh 0;
 }
 
 .home-main {
