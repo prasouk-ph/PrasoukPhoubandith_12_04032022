@@ -16,36 +16,46 @@ The application is in progress, the navigation doesn't work and the resolution s
 
 -   Javascript
 -   CSS
--   [Npm](https://www.npmjs.com/package/npm) v8.1.3
--   [React](https://fr.reactjs.org/) v17.0.2
--   [React-router-dom](https://reactrouter.com/) v6.2.2
--   [Recharts](https://recharts.org/en-US/) v2.1.9
--   [Prop-types](https://www.npmjs.com/package/prop-types) v15.8.1
+-   [Npm](https://www.npmjs.com/package/npm) (v8.1.3)
+-   [React](https://fr.reactjs.org/) (v17.0.2)
+-   [React-router-dom](https://reactrouter.com/) (v6.2.2)
+-   [Recharts](https://recharts.org/en-US/) (v2.1.9)
+-   [Prop-types](https://www.npmjs.com/package/prop-types) (v15.8.1)
+
+## Prerequisites
+
+-   Git
+-   Node
 
 ## Installation
 
 To be able to use the application, you will need to install the back-end and the front-end
 
-### Front-end
+#### Front-end
 
-    1- Install npm on your system : `npm install`
+1- Clone this repository on your system : `git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
 
-    2- Clone this repository : `git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
+3- Rename the folder project
 
-### Back-end
+4- Open a terminal in the project : `cd PrasoukPhoubandith_12_04032022`
 
-    Follow instructions on : https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+5- Install dependencies with : `npm install`
+
+#### Back-end
+
+Follow instructions on :
+`https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard`
 
 ## How to run
 
 The front-end need the back-end API, to use it, you need to :
-1- Launch the back-end with: `npm start`
-Will run in port 3000
+1- Launch the back-end first with: `npm start`
+It will run in port 3000
 
 2- Launch the front-end with: `npm start`
-Will run in port 3001
-
-You can now use the URL parameter id 12 or 18
+Because of back-end running, you will encounter a message from the terminal 'Would you like to run the app on another port instead?' , choose 'yes' to run the front in another port
+The application will open in your favorite browser, you can change the URL parameter if you want to see alternative data (id= 12 or 18)
+Example : `http://localhost:3001/`
 
 ## Authors
 
