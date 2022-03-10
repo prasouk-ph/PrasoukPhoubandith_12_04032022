@@ -16,11 +16,11 @@ The application is in progress, the navigation doesn't work and the resolution s
 
 -   Javascript
 -   CSS
--   [Npm] (https://www.npmjs.com/package/npm) v8.1.3
--   [React] (https://fr.reactjs.org/) v17.0.2
--   [React-router-dom] (https://reactrouter.com/) v6.2.2
--   [Recharts] (https://recharts.org/en-US/) v2.1.9
--   [Prop-types] (https://www.npmjs.com/package/prop-types) v15.8.1
+-   [Npm](https://www.npmjs.com/package/npm) v8.1.3
+-   [React](https://fr.reactjs.org/) v17.0.2
+-   [React-router-dom](https://reactrouter.com/) v6.2.2
+-   [Recharts](https://recharts.org/en-US/) v2.1.9
+-   [Prop-types](https://www.npmjs.com/package/prop-types) v15.8.1
 
 ## Installation
 
