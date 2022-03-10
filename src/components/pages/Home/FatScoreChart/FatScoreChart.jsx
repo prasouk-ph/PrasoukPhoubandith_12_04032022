@@ -10,11 +10,16 @@ import './FatScoreChart.css'
 
 /**
  * Create a radial chart from user fat score
- * @param { Number } data - user data
+ * @param { Object } data - user data
  * @returns { HTMLElement }
  */
 function FatScore({ data }) {
-    const userScore = data * 100
+    let userScore
+    if (data.score) {
+        userScore = data.score * 100
+    } else {
+        userScore = data.todayScore * 100
+    } 
 
     // radial bar need specific format
     const formatedScore = [
@@ -74,11 +79,11 @@ function FatScore({ data }) {
                 </ResponsiveContainer>
             </div>
         );
-    } else { return (<p>Chargement...</p>) }
+    } else { return (<p className="fatscore-chart">Chargement...</p>) }
 }
 
 FatScore.propTypes = {
-    data: PropTypes.number
+    data: PropTypes.object
 }
 
 export default FatScore;

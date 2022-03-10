@@ -49,10 +49,9 @@ function Home() {
         }
         finally {
             setIsLoaded(true)
-            // console.log(userPerformanceData)
+            
         }
     }
-
     
     useEffect(() => {
         getUserData(id)
@@ -83,7 +82,7 @@ function Home() {
                         <div className="secondaries-chart">
                             <SessionChart data={userSessionsData} />
                             <PerformanceChart data={userPerformanceData} />
-                            <FatScoreChart data={userInfo.todayScore} />
+                            <FatScoreChart data={userInfo} />
                         </div>
 
                     </div>
