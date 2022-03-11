@@ -25,6 +25,13 @@
     font-weight: 500;
 }
 
+.nutrient-item-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+}
+
 .nutrient-item-error {
     justify-content: center;
     padding-left: 0;

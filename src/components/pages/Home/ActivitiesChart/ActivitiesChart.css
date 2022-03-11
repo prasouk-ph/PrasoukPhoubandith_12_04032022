@@ -66,6 +66,12 @@
     justify-content: space-around;
 }
 
+.activities-chart-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .activities-chart-error {
     align-items: center;
 }

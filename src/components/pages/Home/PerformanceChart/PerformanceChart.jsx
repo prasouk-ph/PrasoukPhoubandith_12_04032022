@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, useContext } from "react";
 import { LoadStateContext } from '../Home'
 import './PerformanceChart.css'
+import { Oval } from 'react-loader-spinner'
 
 
 /**
@@ -46,7 +47,17 @@ function PerformanceChart({ data }) {
     })
     
     if (!loadState) {
-        return ( <p>Chargement...</p>)
+        return (
+            <div className="performance-chart performance-chart-load">
+                <Oval
+                    height="3vh"
+                    width="3vw"
+                    color='#FF0000'
+                    secondaryColor="grey"
+                    ariaLabel='loading'
+                />
+            </div>
+        )
     } else if (dataFormatIsValid) {
         return (
             <div className="performance-chart">

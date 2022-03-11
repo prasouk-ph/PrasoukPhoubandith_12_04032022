@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, useContext } from "react";
 import { LoadStateContext } from '../Home'
 import './SessionChart.css'
+import { Oval } from 'react-loader-spinner'
 
 /**
  * Format tooltip content
@@ -82,7 +83,17 @@ function SessionChart({ data }) {
     })
 
     if (!loadState) {
-        return (<p>Chargement...</p>)
+        return (
+            <div className="session-chart session-chart-load">
+                <Oval
+                    height="3vh"
+                    width="3vw"
+                    color='#FF0000'
+                    secondaryColor="grey"
+                    ariaLabel='loading'
+                />
+            </div>
+        )
     } else if (dataFormatIsValid) {
         return (
             <div className="session-chart session-chart-red">

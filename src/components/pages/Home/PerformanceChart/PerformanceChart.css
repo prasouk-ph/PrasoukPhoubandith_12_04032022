@@ -7,6 +7,12 @@
     justify-content: center;
 }
 
+.performance-chart-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .performance-chart-error-message {
     display: flex;
     flex-direction: column;

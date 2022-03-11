@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, useContext } from "react";
 import { LoadStateContext } from '../Home'
 import './FatScoreChart.css'
+import { Oval } from 'react-loader-spinner'
 
 /**
  * Create a radial chart from user fat score
@@ -47,7 +48,17 @@ function FatScore({ data }) {
     ];
 
     if (!loadState) {
-        return ( <p>Chargement...</p>)
+        return (
+            <div className="fatscore-chart fatscore-chart-load">
+                <Oval
+                    height="3vh"
+                    width="3vw"
+                    color='#FF0000'
+                    secondaryColor="grey"
+                    ariaLabel='loading'
+                />
+            </div>
+        )
     } else if (dataFormatIsValid) {
         return (
             <div className="fatscore-chart">

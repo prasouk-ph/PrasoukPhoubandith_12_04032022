@@ -3,6 +3,13 @@
     position: relative;
     width: 17.917vw;
     aspect-ratio: 1 / 1;
+    background: #fbfbfb;
+}
+
+.session-chart-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .session-chart-title {

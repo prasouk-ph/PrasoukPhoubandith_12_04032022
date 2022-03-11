@@ -7,6 +7,7 @@ import CaloriesIcon from '../../../../assets/calories-icon.png'
 import ProteinsIcon from '../../../../assets/protein-icon.png'
 import CarbsIcon from '../../../../assets/carbs-icon.png'
 import FatIcon from '../../../../assets/fat-icon.png'
+import { Oval } from 'react-loader-spinner'
 
 /**
  * Create an info box
@@ -66,7 +67,17 @@ function NutrientInfo({nutrientType, data}) {
     })
 
     if (!loadState) {
-        return ( <p>Chargement...</p>)
+        return (
+            <div className="nutrient-item nutrient-item-load">
+                <Oval
+                    height="3vh"
+                    width="3vw"
+                    color='#FF0000'
+                    secondaryColor="grey"
+                    ariaLabel='loading'
+                />
+            </div>
+        )
     } else if (dataFormatIsValid) {
         return (
             <div className="nutrient-item">

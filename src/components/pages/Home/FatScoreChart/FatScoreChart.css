@@ -21,6 +21,12 @@
     justify-content: center;
 }
 
+.fatscore-chart-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .fatscore-chart-error-message {
     display: flex;
     flex-direction: column;
