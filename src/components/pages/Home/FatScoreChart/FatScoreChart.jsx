@@ -6,6 +6,7 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
+import { useState, useEffect } from "react";
 import './FatScoreChart.css'
 
 /**
@@ -14,19 +15,36 @@ import './FatScoreChart.css'
  * @returns { HTMLElement }
  */
 function FatScore({ data }) {
-    let userScore
-    if (data.score) {
-        userScore = data.score * 100
-    } else {
-        userScore = data.todayScore * 100
-    } 
+    // let userScore
+    // if (data.score) {
+    //     userScore = data.score * 100
+    // } else {
+    //     userScore = data.todayScore * 100
+    // }
+    const userScore = data.todayScore * 100
 
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (data.hasOwnProperty("todayScore")) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
+        
+    useEffect(() => {
+        checkData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    
     // radial bar need specific format
     const formatedScore = [
         { name: 'score', value: userScore, fill: "#E60000" }
-         ];
+    ];
 
-    if (data !== undefined) {
+    if (dataFormatIsValid) {
         return (
             <div className="fatscore-chart">
                 <ResponsiveContainer>
@@ -79,7 +97,16 @@ function FatScore({ data }) {
                 </ResponsiveContainer>
             </div>
         );
-    } else { return (<p className="fatscore-chart">Chargement...</p>) }
+    } else {
+        return (
+            <div className="fatscore-chart">
+                <div className="fatscore-chart-error-message">
+                    <p className="fatscore-chart-error-message-icon">( ! )</p>
+                    <p className="fatscore-chart-error-message-text">Erreur de format</p>
+                </div>
+            </div>
+        )
+    }
 }
 
 FatScore.propTypes = {

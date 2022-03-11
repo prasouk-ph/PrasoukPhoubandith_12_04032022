@@ -42,7 +42,6 @@ function Home() {
         }
         finally {
             setIsLoaded(true)
-            console.log(userPerformanceData)
         }
     }
     
@@ -77,7 +76,6 @@ function Home() {
                             <PerformanceChart data={userPerformanceData} />
                             <FatScoreChart data={userInfo} />
                         </div>
-
                     </div>
 
                     <div className="nutritional-intake">

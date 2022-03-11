@@ -7,6 +7,7 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
+import { useState, useEffect } from "react";
 import './SessionChart.css'
 
 /**
@@ -63,16 +64,28 @@ function getTickName(tickIndex) {
  * @returns { HTMLElement }
  */
 function SessionChart({ data }) {
-    if (data.length > 0) {
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("sessionLength"))) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
+    
+    useEffect(() => {
+        checkData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    if (dataFormatIsValid) {
         return (
-            <div className="session-chart">
+            <div className="session-chart session-chart-red">
                 <h2 className="session-chart-title">Durée moyenne des sessions</h2>
 
                 <ResponsiveContainer>
                     <LineChart
-                        className="session-chart"
-                        width={258}
-                        height={263}
                         data={data}
                         margin={{
                             top: 80, right: 20, left: 20, bottom: 13
@@ -87,7 +100,16 @@ function SessionChart({ data }) {
                 </ResponsiveContainer>
             </div>
         );
-    } else { return (<p>Chargement...</p>) }
+    } else {
+        return (
+            <div className="session-chart session-chart-grey">
+                <div className="session-chart-error-message">
+                    <p className="session-chart-error-message-icon">( ! )</p>
+                    <p className="session-chart-error-message-text">Erreur de format</p>
+                </div>
+            </div>
+        )
+    }
 }
 
 SessionChart.propTypes = {

@@ -1,5 +1,4 @@
 .session-chart {
-    background: linear-gradient(90deg, #ff0000 70%, #e50000 30%);
     border-radius: 5px;
     position: relative;
     width: 17.917vw;
@@ -18,10 +17,24 @@
     height: 48px;
 }
 
-/* .session-chart-XAxis {
-    margin-right: 50px;
+.session-chart-red {
+    background: linear-gradient(90deg, #ff0000 70%, #e50000 30%);
 }
 
-.session-chart-line {
-    margin-right: 50px;
-} */
+.session-chart-grey {
+    background: #fbfbfb;
+    display: flex;
+    justify-content: center;
+}
+
+.session-chart-error-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.session-chart-error-message-icon {
+    color: #ff0000;
+}

@@ -24,3 +24,21 @@
     font-size: 0.972vw;
     font-weight: 500;
 }
+
+.nutrient-item-error {
+    justify-content: center;
+    padding-left: 0;
+}
+
+.nutrient-item-error-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.nutrient-item-error-message-icon {
+    color: #ff0000;
+    margin: 0;
+}

@@ -7,6 +7,7 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
+import { useState, useEffect } from "react";
 import './PerformanceChart.css'
 
 /**
@@ -17,6 +18,21 @@ import './PerformanceChart.css'
 function PerformanceChart({ data }) {
     const kindName = data.kind
 
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (data.data.some(session => session.hasOwnProperty("value")) && data.data.some(session => session.hasOwnProperty("kind"))) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
+    
+    useEffect(() => {
+        checkData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     /**
      * Format tooltip content
      * @param { Number } tickIndex 
@@ -26,7 +42,7 @@ function PerformanceChart({ data }) {
         return kindName[tickIndex]
     }
     
-    if (data.data !== undefined) {
+    if (dataFormatIsValid) {
         return (
             <div className="performance-chart">
                 <ResponsiveContainer>
@@ -43,7 +59,16 @@ function PerformanceChart({ data }) {
                 </ResponsiveContainer>
             </div>
         );
-    } else { return (<p>Chargement...</p>) }
+    } else {
+        return (
+            <div className="performance-chart">
+                <div className="performance-chart-error-message">
+                    <p className="performance-chart-error-message-icon">( ! )</p>
+                    <p className="performance-chart-error-message-text">Erreur de format</p>
+                </div>
+            </div>
+        )
+    }
 }
 
 PerformanceChart.propTypes = {

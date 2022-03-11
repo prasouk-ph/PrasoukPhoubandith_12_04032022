@@ -9,6 +9,7 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
+import { useState, useEffect } from "react";
 import './ActivitiesChart.css'
 
 /**
@@ -59,7 +60,22 @@ function getTickName(dayValue) {
  * @returns { HTMLElement }
  */
 function ActivitiesChart({ data }) {
-    if (data.length > 0) {
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (data.some(session => session.hasOwnProperty("calories")) && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("kilogram"))) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
+    
+    useEffect(() => {
+        checkData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    if (dataFormatIsValid) {
         return (
             <div className="activities-chart" >
                 <div className="chart-header">
@@ -107,7 +123,16 @@ function ActivitiesChart({ data }) {
                 </ResponsiveContainer>
             </div>
         );
-    } else { return (<p>Chargement...</p>) }
+    } else {
+        return (
+            <div className="activities-chart activities-chart-error">
+                <div className="activities-chart-error-message">
+                    <p className="activities-chart-error-message-icon">( ! )</p>
+                    <p className="activities-chart-error-message-text">Erreur de format</p>
+                </div>
+            </div>
+        )
+    }
 }
 
 ActivitiesChart.propTypes = {

@@ -15,34 +15,46 @@ import FatIcon from '../../../../assets/fat-icon.png'
  * @returns { HTMLElement }
  */
 function NutrientInfo({nutrientType, data}) {
-    const [nutrientName, setNutrientName] = useState('Chargement...')
-    const [nutrientQuantity, setNutrientQuantity] = useState('Chargement...')
-    const [nutrientUnit, setNutrientUnit] = useState('Chargement...')
-    const [icon, setIcon] = useState('Chargement...')
+    const [nutrientName, setNutrientName] = useState(null)
+    const [nutrientQuantity, setNutrientQuantity] = useState(null)
+    const [nutrientUnit, setNutrientUnit] = useState(null)
+    const [icon, setIcon] = useState(null)
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (data.hasOwnProperty("calorieCount") && data.hasOwnProperty("carbohydrateCount") && data.hasOwnProperty("lipidCount") && data.hasOwnProperty("proteinCount")) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
+    
+    useEffect(() => {
+        checkData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function getNutrientData() {
-        if (data !== undefined ) {
-            if (nutrientType === 'calorie') {
-                setNutrientQuantity(data.calorieCount) 
-                setNutrientUnit('kCal')
-                setNutrientName('Calories')
-                setIcon(CaloriesIcon)
-            } else if (nutrientType === 'protein') {
-                setNutrientQuantity(data.proteinCount)
-                setNutrientUnit('g')
-                setNutrientName('Protéines')
-                setIcon(ProteinsIcon)
-            } else if (nutrientType === 'carbohydrate') {
-                setNutrientQuantity(data.carbohydrateCount)
-                setNutrientUnit('g')
-                setNutrientName('Glucides')
-                setIcon(CarbsIcon)
-            } else if (nutrientType === 'lipid') {
-                setNutrientQuantity(data.lipidCount)
-                setNutrientUnit('g')
-                setNutrientName('Lipides')
-                setIcon(FatIcon)
-            }
+        if (nutrientType === 'calorie') {
+            setNutrientQuantity(data.calorieCount) 
+            setNutrientUnit('kCal')
+            setNutrientName('Calories')
+            setIcon(CaloriesIcon)
+        } else if (nutrientType === 'protein') {
+            setNutrientQuantity(data.proteinCount)
+            setNutrientUnit('g')
+            setNutrientName('Protéines')
+            setIcon(ProteinsIcon)
+        } else if (nutrientType === 'carbohydrate') {
+            setNutrientQuantity(data.carbohydrateCount)
+            setNutrientUnit('g')
+            setNutrientName('Glucides')
+            setIcon(CarbsIcon)
+        } else if (nutrientType === 'lipid') {
+            setNutrientQuantity(data.lipidCount)
+            setNutrientUnit('g')
+            setNutrientName('Lipides')
+            setIcon(FatIcon)
         }
     }
 
@@ -50,15 +62,26 @@ function NutrientInfo({nutrientType, data}) {
         getNutrientData()
     })
 
-    return (
-        <div className="nutrient-item">
-            <img className='nutrient-icon' src={icon} alt={`${nutrientType} icon`} />
-            <div className="nutrient-details">
-                <p className='nutrient-quantity'>{`${nutrientQuantity}${nutrientUnit}`}</p>
-                <p className='nutrient-name'>{nutrientName}</p>
+    if (dataFormatIsValid) {
+        return (
+            <div className="nutrient-item">
+                <img className='nutrient-icon' src={icon} alt={`${nutrientType} icon`} />
+                <div className="nutrient-details">
+                    <p className='nutrient-quantity'>{`${nutrientQuantity}${nutrientUnit}`}</p>
+                    <p className='nutrient-name'>{nutrientName}</p>
+                </div>
             </div>
-        </div>
-  );
+        )
+    } else {
+        return (
+            <div className="nutrient-item nutrient-item-error">
+                <div className="nutrient-item-error-message">
+                    <p className="nutrient-item-error-message-icon">( ! )</p>
+                    <p className="nutrient-item-error-message-text">Erreur de format</p>
+                </div>
+            </div>
+        )
+    }
 }
 
 NutrientInfo.propTypes = {
