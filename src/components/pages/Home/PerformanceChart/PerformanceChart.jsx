@@ -70,7 +70,9 @@ function PerformanceChart({ data }) {
                         data={data.data}
                     >
                         <PolarGrid stroke="white" />
+                        
                         <PolarAngleAxis style={{ fontSize: '0.833vw' }} stroke="white" dataKey="kind" tickLine={false} tickFormatter={getTickName}/>
+                        
                         <Radar name="user" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
                     </RadarChart>
                 </ResponsiveContainer>

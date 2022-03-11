@@ -104,10 +104,10 @@ function SessionChart({ data }) {
                     <LineChart
                         data={data}
                         margin={{
-                            top: 80, right: 20, left: 20, bottom: 13
+                            top: 80, right: 20, left: 20, bottom: 30
                         }}
                     >
-                        <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName}/>
+                        <XAxis dataKey="day" axisLine={false} stroke="#FE7F7F" tickLine={false} tickFormatter={getTickName} dy={23} />
 
                         <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
                         
