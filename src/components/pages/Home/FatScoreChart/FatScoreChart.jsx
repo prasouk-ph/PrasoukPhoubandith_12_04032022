@@ -6,7 +6,8 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoadStateContext } from '../Home'
 import './FatScoreChart.css'
 
 /**
@@ -24,9 +25,11 @@ function FatScore({ data }) {
     const userScore = data.todayScore * 100
 
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+    
+    const loadState = useContext(LoadStateContext); // get load state from home page
 
     function checkData() {
-        if (data.hasOwnProperty("todayScore")) {
+        if (loadState && data.hasOwnProperty("todayScore")) {
             setDataFormatIsValid(true)
         } else {
             setDataFormatIsValid(false)
@@ -35,8 +38,7 @@ function FatScore({ data }) {
         
     useEffect(() => {
         checkData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 
     
     // radial bar need specific format
@@ -44,7 +46,9 @@ function FatScore({ data }) {
         { name: 'score', value: userScore, fill: "#E60000" }
     ];
 
-    if (dataFormatIsValid) {
+    if (!loadState) {
+        return ( <p>Chargement...</p>)
+    } else if (dataFormatIsValid) {
         return (
             <div className="fatscore-chart">
                 <ResponsiveContainer>

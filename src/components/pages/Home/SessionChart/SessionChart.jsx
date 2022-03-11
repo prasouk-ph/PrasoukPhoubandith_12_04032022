@@ -7,7 +7,8 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoadStateContext } from '../Home'
 import './SessionChart.css'
 
 /**
@@ -64,10 +65,12 @@ function getTickName(tickIndex) {
  * @returns { HTMLElement }
  */
 function SessionChart({ data }) {
+    const loadState = useContext(LoadStateContext); // get load state from home page
+
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
 
     function checkData() {
-        if (data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("sessionLength"))) {
+        if (loadState && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("sessionLength"))) {
             setDataFormatIsValid(true)
         } else {
             setDataFormatIsValid(false)
@@ -76,10 +79,11 @@ function SessionChart({ data }) {
     
     useEffect(() => {
         checkData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 
-    if (dataFormatIsValid) {
+    if (!loadState) {
+        return (<p>Chargement...</p>)
+    } else if (dataFormatIsValid) {
         return (
             <div className="session-chart session-chart-red">
                 <h2 className="session-chart-title">Durée moyenne des sessions</h2>

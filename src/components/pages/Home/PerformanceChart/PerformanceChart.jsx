@@ -7,8 +7,10 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoadStateContext } from '../Home'
 import './PerformanceChart.css'
+
 
 /**
  * Format tooltip content
@@ -17,22 +19,7 @@ import './PerformanceChart.css'
  */
 function PerformanceChart({ data }) {
     const kindName = data.kind
-
-    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
-
-    function checkData() {
-        if (data.data.some(session => session.hasOwnProperty("value")) && data.data.some(session => session.hasOwnProperty("kind"))) {
-            setDataFormatIsValid(true)
-        } else {
-            setDataFormatIsValid(false)
-        }
-    }
     
-    useEffect(() => {
-        checkData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     /**
      * Format tooltip content
      * @param { Number } tickIndex 
@@ -41,8 +28,26 @@ function PerformanceChart({ data }) {
     function getTickName(tickIndex) {
         return kindName[tickIndex]
     }
+
+    const loadState = useContext(LoadStateContext); // get load state from home page
+
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
+    function checkData() {
+        if (loadState && data.data.some(session => session.hasOwnProperty("value")) && data.data.some(session => session.hasOwnProperty("kind"))) {
+            setDataFormatIsValid(true)
+        } else {
+            setDataFormatIsValid(false)
+        }
+    }
     
-    if (dataFormatIsValid) {
+    useEffect(() => {
+        checkData()
+    })
+    
+    if (!loadState) {
+        return ( <p>Chargement...</p>)
+    } else if (dataFormatIsValid) {
         return (
             <div className="performance-chart">
                 <ResponsiveContainer>
@@ -52,8 +57,7 @@ function PerformanceChart({ data }) {
                         data={data.data}
                     >
                         <PolarGrid stroke="white" />
-                        <PolarAngleAxis style={{ fontSize: '0.833vw' }} stroke="white" dataKey="kind" tickLine={false} tickFormatter={getTickName}
-        />
+                        <PolarAngleAxis style={{ fontSize: '0.833vw' }} stroke="white" dataKey="kind" tickLine={false} tickFormatter={getTickName}/>
                         <Radar name="user" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
                     </RadarChart>
                 </ResponsiveContainer>

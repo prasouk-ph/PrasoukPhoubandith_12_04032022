@@ -1,7 +1,7 @@
 import React from "react";
 import './NutrientInfo.css'
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoadStateContext } from '../Home'
 import PropTypes from 'prop-types'
 import CaloriesIcon from '../../../../assets/calories-icon.png'
 import ProteinsIcon from '../../../../assets/protein-icon.png'
@@ -21,8 +21,10 @@ function NutrientInfo({nutrientType, data}) {
     const [icon, setIcon] = useState(null)
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
 
+    const loadState = useContext(LoadStateContext); // get load state from home page
+
     function checkData() {
-        if (data.hasOwnProperty("calorieCount") && data.hasOwnProperty("carbohydrateCount") && data.hasOwnProperty("lipidCount") && data.hasOwnProperty("proteinCount")) {
+        if (loadState && data.hasOwnProperty("calorieCount") && data.hasOwnProperty("carbohydrateCount") && data.hasOwnProperty("lipidCount") && data.hasOwnProperty("proteinCount")) {
             setDataFormatIsValid(true)
         } else {
             setDataFormatIsValid(false)
@@ -31,30 +33,31 @@ function NutrientInfo({nutrientType, data}) {
     
     useEffect(() => {
         checkData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 
     function getNutrientData() {
-        if (nutrientType === 'calorie') {
-            setNutrientQuantity(data.calorieCount) 
-            setNutrientUnit('kCal')
-            setNutrientName('Calories')
-            setIcon(CaloriesIcon)
-        } else if (nutrientType === 'protein') {
-            setNutrientQuantity(data.proteinCount)
-            setNutrientUnit('g')
-            setNutrientName('Protéines')
-            setIcon(ProteinsIcon)
-        } else if (nutrientType === 'carbohydrate') {
-            setNutrientQuantity(data.carbohydrateCount)
-            setNutrientUnit('g')
-            setNutrientName('Glucides')
-            setIcon(CarbsIcon)
-        } else if (nutrientType === 'lipid') {
-            setNutrientQuantity(data.lipidCount)
-            setNutrientUnit('g')
-            setNutrientName('Lipides')
-            setIcon(FatIcon)
+        if (loadState) {
+            if (nutrientType === 'calorie') {
+                setNutrientQuantity(data.calorieCount) 
+                setNutrientUnit('kCal')
+                setNutrientName('Calories')
+                setIcon(CaloriesIcon)
+            } else if (nutrientType === 'protein') {
+                setNutrientQuantity(data.proteinCount)
+                setNutrientUnit('g')
+                setNutrientName('Protéines')
+                setIcon(ProteinsIcon)
+            } else if (nutrientType === 'carbohydrate') {
+                setNutrientQuantity(data.carbohydrateCount)
+                setNutrientUnit('g')
+                setNutrientName('Glucides')
+                setIcon(CarbsIcon)
+            } else if (nutrientType === 'lipid') {
+                setNutrientQuantity(data.lipidCount)
+                setNutrientUnit('g')
+                setNutrientName('Lipides')
+                setIcon(FatIcon)
+            }
         }
     }
 
@@ -62,7 +65,9 @@ function NutrientInfo({nutrientType, data}) {
         getNutrientData()
     })
 
-    if (dataFormatIsValid) {
+    if (!loadState) {
+        return ( <p>Chargement...</p>)
+    } else if (dataFormatIsValid) {
         return (
             <div className="nutrient-item">
                 <img className='nutrient-icon' src={icon} alt={`${nutrientType} icon`} />

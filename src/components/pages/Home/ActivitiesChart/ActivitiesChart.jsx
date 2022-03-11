@@ -9,7 +9,8 @@ import {
     ResponsiveContainer
 } from "recharts";
 import PropTypes from 'prop-types'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoadStateContext } from '../Home'
 import './ActivitiesChart.css'
 
 /**
@@ -62,8 +63,10 @@ function getTickName(dayValue) {
 function ActivitiesChart({ data }) {
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
 
+    const loadState = useContext(LoadStateContext); // get load state from home page
+
     function checkData() {
-        if (data.some(session => session.hasOwnProperty("calories")) && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("kilogram"))) {
+        if (loadState && data.some(session => session.hasOwnProperty("calories")) && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("kilogram"))) {
             setDataFormatIsValid(true)
         } else {
             setDataFormatIsValid(false)
@@ -72,10 +75,11 @@ function ActivitiesChart({ data }) {
     
     useEffect(() => {
         checkData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 
-    if (dataFormatIsValid) {
+    if (!loadState) {
+        return ( <p>Chargement...</p>)
+    } else if (dataFormatIsValid) {
         return (
             <div className="activities-chart" >
                 <div className="chart-header">
