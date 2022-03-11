@@ -22,6 +22,7 @@ The application is in progress, the navigation doesn't work and the resolution s
 -   [Recharts](https://recharts.org/en-US/) (v2.1.9)
 -   [Prop-types](https://www.npmjs.com/package/prop-types) (v15.8.1)
 -   [React-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) (v6.0.0-0)
+-   [Axios](https://axios-http.com/docs/intro) (v0.26.1)
 
 ## Prerequisites
 

@@ -40,7 +40,8 @@ function Home() {
 
             const userPerformanceDataResponse = await getPerformanceData(userId)
             setUserPerformanceData(userPerformanceDataResponse)
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error.message)
             setError(true)
         }
