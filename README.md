@@ -21,6 +21,7 @@ The application is in progress, the navigation doesn't work and the resolution s
 -   [React-router-dom](https://reactrouter.com/) (v6.2.2)
 -   [Recharts](https://recharts.org/en-US/) (v2.1.9)
 -   [Prop-types](https://www.npmjs.com/package/prop-types) (v15.8.1)
+-   [React-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) (v6.0.0-0)
 
 ## Prerequisites
 
@@ -56,7 +57,10 @@ It will run in port 3000
 2- Launch the front-end with: `npm start`
 Because of back-end running, you will encounter a message from the terminal 'Would you like to run the app on another port instead?' , choose 'yes' to run the front in another port
 The application will open in your favorite browser, you can change the URL parameter if you want to see alternative data (id= 12 or 18)
-Example : `http://localhost:3001/`
+Example :
+`http://localhost:3001/12`
+or
+`http://localhost:3001/18`
 
 ## Authors
 
