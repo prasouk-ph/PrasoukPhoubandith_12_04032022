@@ -36,11 +36,9 @@ To be able to use the application, you will need to install the back-end and the
 
 1- Clone this repository on your system : `git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
 
-3- Rename the folder project
+2- Open a terminal in the project : `cd PrasoukPhoubandith_12_04032022`
 
-4- Open a terminal in the project : `cd PrasoukPhoubandith_12_04032022`
-
-5- Install dependencies with : `npm install`
+3- Install dependencies with : `npm install`
 
 #### Back-end
 
@@ -52,11 +50,15 @@ Follow instructions on :
 The front-end need the back-end API, to use it, you need to :
 
 1- Launch the back-end first with: `npm start`
+
 It will run in port 3000
 
 2- Launch the front-end with: `npm start`
+
 Because of back-end running, you will encounter a message from the terminal 'Would you like to run the app on another port instead?' , choose 'yes' to run the front in another port
+
 The application will open in your favorite browser, you can change the URL parameter if you want to see alternative data (id= 12 or 18)
+
 Example :
 `http://localhost:3001/12`
 or
