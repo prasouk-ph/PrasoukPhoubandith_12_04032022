@@ -19,7 +19,11 @@ import { Oval } from 'react-loader-spinner'
  * @returns { HTMLElement }
  */
 function PerformanceChart({ data }) {
+    const loadState = useContext(LoadStateContext); // get load state from home page
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
     const kindName = data.kind
+    
     
     /**
      * Format tooltip content
@@ -30,9 +34,6 @@ function PerformanceChart({ data }) {
         return kindName[tickIndex]
     }
 
-    const loadState = useContext(LoadStateContext); // get load state from home page
-
-    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
 
     function checkData() {
         if (loadState && data.data.some(session => session.hasOwnProperty("value")) && data.data.some(session => session.hasOwnProperty("kind"))) {
@@ -46,6 +47,7 @@ function PerformanceChart({ data }) {
         checkData()
     })
     
+
     if (!loadState) {
         return (
             <div className="performance-chart performance-chart-load">

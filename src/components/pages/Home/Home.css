@@ -58,3 +58,15 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.home-error-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.home-error-message-icon {
+    color: #ff0000;
+}

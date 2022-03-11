@@ -8,7 +8,7 @@ import { useState, useEffect, createContext } from "react";
 import { useParams } from "react-router-dom";
 import './Home.css';
 
-export const LoadStateContext = createContext()
+export const LoadStateContext = createContext() // need to be outside of home component to export that way
 
 /**
  * Create a component
@@ -26,19 +26,19 @@ function Home() {
     const userName = userInfo?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
 
 
-    async function getUserData(id) {
+    async function getUserData(userId) {
         setIsLoaded(false)
         try {
-            const userInfoResponse = await getUserInfo(id)
+            const userInfoResponse = await getUserInfo(userId)
             setUserInfo(userInfoResponse)
 
-            const userActivitiesDataResponse = await getActivitiesData(id)
+            const userActivitiesDataResponse = await getActivitiesData(userId)
             setUserActivitiesData(userActivitiesDataResponse)
 
-            const userSessionsDataResponse = await getSessionsData(id)
+            const userSessionsDataResponse = await getSessionsData(userId)
             setUserSessionsData(userSessionsDataResponse)
 
-            const userPerformanceDataResponse = await getPerformanceData(id)
+            const userPerformanceDataResponse = await getPerformanceData(userId)
             setUserPerformanceData(userPerformanceDataResponse)
         } catch (error) {
             console.log(error.message)
@@ -55,10 +55,17 @@ function Home() {
     
     
     if (error) {
-        return (<p className='home'>Erreur lors du chargement des données !</p>)
+        return (
+            <div className='home'>
+                <div className="home-error-message">
+                    <p className="home-error-message-icon">( ! )</p>
+                    <p className="home-error-message-text">Erreur lors du chargement des données</p>
+                </div>
+            </div>
+        )
     } else {
         return (
-            <LoadStateContext.Provider value={isLoaded}>
+            <LoadStateContext.Provider value={isLoaded}> {/* give load state to every children */}
                 <div className='home'>
                     <div className='home-header'>
                         <div className='greeting-message'>

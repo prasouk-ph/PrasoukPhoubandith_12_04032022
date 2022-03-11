@@ -17,18 +17,17 @@ import { Oval } from 'react-loader-spinner'
  * @returns { HTMLElement }
  */
 function FatScore({ data }) {
-    // let userScore
-    // if (data.score) {
-    //     userScore = data.score * 100
-    // } else {
-    //     userScore = data.todayScore * 100
-    // }
+    const loadState = useContext(LoadStateContext); // get load state from home page
+    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
     const userScore = data.todayScore * 100
 
-    const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
-    
-    const loadState = useContext(LoadStateContext); // get load state from home page
+    // radial bar need specific format
+    const formatedScore = [
+        { name: 'score', value: userScore, fill: "#E60000" }
+    ];
 
+    
     function checkData() {
         if (loadState && data.hasOwnProperty("todayScore")) {
             setDataFormatIsValid(true)
@@ -41,11 +40,6 @@ function FatScore({ data }) {
         checkData()
     })
 
-    
-    // radial bar need specific format
-    const formatedScore = [
-        { name: 'score', value: userScore, fill: "#E60000" }
-    ];
 
     if (!loadState) {
         return (

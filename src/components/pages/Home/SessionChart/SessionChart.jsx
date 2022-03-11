@@ -67,8 +67,8 @@ function getTickName(tickIndex) {
  */
 function SessionChart({ data }) {
     const loadState = useContext(LoadStateContext); // get load state from home page
-
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
+
 
     function checkData() {
         if (loadState && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("sessionLength"))) {
@@ -82,6 +82,7 @@ function SessionChart({ data }) {
         checkData()
     })
 
+    
     if (!loadState) {
         return (
             <div className="session-chart session-chart-load">

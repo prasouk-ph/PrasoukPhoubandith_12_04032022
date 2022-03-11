@@ -62,10 +62,10 @@ function getTickName(dayValue) {
  * @returns { HTMLElement }
  */
 function ActivitiesChart({ data }) {
+    const loadState = useContext(LoadStateContext); // get load state from home page    
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
 
-    const loadState = useContext(LoadStateContext); // get load state from home page
-
+    
     function checkData() {
         if (loadState && data.some(session => session.hasOwnProperty("calories")) && data.some(session => session.hasOwnProperty("day")) && data.some(session => session.hasOwnProperty("kilogram"))) {
             setDataFormatIsValid(true)
@@ -77,6 +77,7 @@ function ActivitiesChart({ data }) {
     useEffect(() => {
         checkData()
     })
+
 
     if (!loadState) {
         return (

@@ -15,14 +15,14 @@ import { Oval } from 'react-loader-spinner'
  * @param { Object } data - user data
  * @returns { HTMLElement }
  */
-function NutrientInfo({nutrientType, data}) {
+function NutrientInfo({ nutrientType, data }) {
+    const loadState = useContext(LoadStateContext); // get load state from home page
     const [nutrientName, setNutrientName] = useState(null)
     const [nutrientQuantity, setNutrientQuantity] = useState(null)
     const [nutrientUnit, setNutrientUnit] = useState(null)
     const [icon, setIcon] = useState(null)
     const [dataFormatIsValid, setDataFormatIsValid] = useState(null)
-
-    const loadState = useContext(LoadStateContext); // get load state from home page
+    
 
     function checkData() {
         if (loadState && data.hasOwnProperty("calorieCount") && data.hasOwnProperty("carbohydrateCount") && data.hasOwnProperty("lipidCount") && data.hasOwnProperty("proteinCount")) {
@@ -35,6 +35,7 @@ function NutrientInfo({nutrientType, data}) {
     useEffect(() => {
         checkData()
     })
+
 
     function getNutrientData() {
         if (loadState) {
@@ -65,6 +66,7 @@ function NutrientInfo({nutrientType, data}) {
     useEffect(() => {
         getNutrientData()
     })
+
 
     if (!loadState) {
         return (
