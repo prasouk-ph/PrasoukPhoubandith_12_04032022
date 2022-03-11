@@ -82,7 +82,7 @@ function SessionChart({ data }) {
 
                         <Tooltip wrapperStyle={styleToolTip} content={<SessionTooltip />} />
                         
-                        <Line type="basis" connectNulls="true" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
+                        <Line type="natural" connectNulls="true" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
