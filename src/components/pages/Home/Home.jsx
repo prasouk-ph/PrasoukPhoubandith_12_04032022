@@ -3,7 +3,7 @@ import SessionChart from './SessionChart/SessionChart'
 import PerformanceChart from './PerformanceChart/PerformanceChart'
 import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
-import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData} from '../../../services/userData'
+import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData } from '../../../services/userData'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import './Home.css';
@@ -13,7 +13,7 @@ import './Home.css';
  * @returns { HTMLElement }
  */
 function Home() {
-    const { id } = useParams(); // current page ID
+    const { id } = useParams(); // get current page ID
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [userInfo, setUserInfo] = useState({});
@@ -36,20 +36,13 @@ function Home() {
 
             const userPerformanceDataResponse = await getPerformanceData(id)
             setUserPerformanceData(userPerformanceDataResponse)
-
-            if (userInfoResponse === "HTTP error" 
-            || userActivitiesDataResponse === "HTTP error" 
-            || userSessionsDataResponse === "HTTP error" 
-            || userPerformanceDataResponse === "HTTP error") {
-                throw new Error(`HTTP error !`)
-            }
         } catch (error) {
             console.log(error.message)
             setError(true)
         }
         finally {
             setIsLoaded(true)
-            
+            console.log(userPerformanceData)
         }
     }
     

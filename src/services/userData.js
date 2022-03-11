@@ -1,88 +1,54 @@
+import axios from 'axios'
+
 /**
  * Get user info from api
+ * @param { Number }
  * @returns { Object }
  */
 async function getUserInfo(userId) {
-    try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`)
-        if (!response.ok) {
-            throw new Error(
-                `This is an HTTP error: The status is ${response.status}`
-            );
-        } else {
-            const { data } = await response.json()
-            return data
-        }
-    } catch (error) {
-        console.log(error.message)
-        return "HTTP error"
-    }
+    const userInfoURL = `http://localhost:3000/user/${userId}`
+    const response = await axios.get(userInfoURL)
+
+    return response.data.data
 }
 
 
 /**
  * Get user activities from api
+ * @param { Number }
  * @returns { Object }
  */
 async function getActivitiesData(userId) {
-    try {
-        const response = await fetch(`http://localhost:3000/user/${userId}/activity`)
-        if (!response.ok) {
-            throw new Error(
-                `This is an HTTP error: The status is ${response.status}`
-            );
-        } else {
-            const { data } = await response.json()
-            return data.sessions
-        }
-    } catch (error) {
-        console.log(error.message)
-        return "HTTP error"
-    }
+    const activitiesDataURL = `http://localhost:3000/user/${userId}/activity`
+    const response = await axios.get(activitiesDataURL)
+
+    return response.data.data.sessions
 }
 
 
 /**
  * Get user sessions from api
+ * @param { Number }
  * @returns { Object }
  */
 async function getSessionsData(userId) {
-    try {
-        const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
-        if (!response.ok) {
-            throw new Error(
-                `This is an HTTP error: The status is ${response.status}`
-            );
-        } else {
-            const { data } = await response.json()
-            return data.sessions
-        }
-    } catch (error) {
-        console.log(error.message)
-        return "HTTP error"
-    }
+    const sessionDataURL = `http://localhost:3000/user/${userId}/average-sessions`
+    const response = await axios.get(sessionDataURL)
+
+    return response.data.data.sessions
 }
 
 
 /**
  * Get user performance from api
+ * @param { Number }
  * @returns { Object }
  */
 async function getPerformanceData(userId) {
-    try {
-        const response = await fetch(`http://localhost:3000/user/${userId}/performance`)
-        if (!response.ok) {
-            throw new Error(
-                `This is an HTTP error: The status is ${response.status}`
-            );
-        } else {
-            const { data } = await response.json()
-            return data
-        }
-    } catch (error) {
-        console.log(error.message)
-        return "HTTP error"
-    }
+    const performanceDataURL = `http://localhost:3000/user/${userId}/performance`
+    const response = await axios.get(performanceDataURL)
+
+    return response.data.data
 }
 
 export { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData }
