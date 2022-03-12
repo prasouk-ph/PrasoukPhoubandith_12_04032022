@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The charts was made with Recharts
 
-The application is in progress, the navigation doesn't work and the resolution should be over 1024\*780px
+The application is in progress, the navigation menus don't work and the resolution should be over 1024\*780px
 
 <img src='https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022/blob/master/screenshot/app-screenshot.png' alt="screenshot"/>
 
@@ -18,6 +18,7 @@ The application is in progress, the navigation doesn't work and the resolution s
 -   CSS
 -   [Npm](https://www.npmjs.com/package/npm) (v8.1.3)
 -   [React](https://fr.reactjs.org/) (v17.0.2)
+-   [Create React App](https://github.com/facebook/create-react-app)
 -   [React-router-dom](https://reactrouter.com/) (v6.2.2)
 -   [Recharts](https://recharts.org/en-US/) (v2.1.9)
 -   [Prop-types](https://www.npmjs.com/package/prop-types) (v15.8.1)
@@ -35,7 +36,8 @@ To be able to use the application, you will need to install the back-end and the
 
 #### Front-end
 
-1- Clone this repository on your system : `git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
+1- Clone this repository on your system :
+`git clone https://github.com/prasouk-ph/PrasoukPhoubandith_12_04032022.git`
 
 2- Open a terminal in the project : `cd PrasoukPhoubandith_12_04032022`
 

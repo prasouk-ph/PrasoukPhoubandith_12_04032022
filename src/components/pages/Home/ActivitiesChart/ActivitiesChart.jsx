@@ -29,7 +29,7 @@ const ActivitesTooltip = ({ active, payload }) => {
         </div>
       );
     }
-  
+
     return null;
 };
 

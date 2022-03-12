@@ -101,7 +101,6 @@ function FatScore({ data }) {
                         >
                             objectif
                         </text>
-                    
                     </RadialBarChart>
                 </ResponsiveContainer>
             </div>
