@@ -64,41 +64,40 @@ function Home() {
                 </div>
             </div>
         )
-    } else {
-        return (
-            <LoadStateContext.Provider value={isLoaded}> {/* give load state to every children */}
-                <div className='home'>
-                    <div className='home-header'>
-                        <div className='greeting-message'>
-                            <p className='hello'>Bonjour</p>
-                            <p className='username'>{userName}</p> 
+    }
+    return (
+        <LoadStateContext.Provider value={isLoaded}> {/* give load state to every children */}
+            <div className='home'>
+                <div className='home-header'>
+                    <div className='greeting-message'>
+                        <p className='hello'>Bonjour</p>
+                        <p className='username'>{userName}</p> 
+                    </div>
+                    <p className='cheering-message'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
+                </div>
+
+                <main className='home-main'>
+                    <div className="charts-container">
+                        <div className="main-chart">
+                            <ActivitesChart data={userActivitiesData} />
                         </div>
-                        <p className='cheering-message'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
+                        <div className="secondaries-chart">
+                            <SessionChart data={userSessionsData} />
+                            <PerformanceChart data={userPerformanceData} />
+                            <FatScoreChart data={userInfo} />
+                        </div>
                     </div>
 
-                    <main className='home-main'>
-                        <div className="charts-container">
-                            <div className="main-chart">
-                                <ActivitesChart data={userActivitiesData} />
-                            </div>
-                            <div className="secondaries-chart">
-                                <SessionChart data={userSessionsData} />
-                                <PerformanceChart data={userPerformanceData} />
-                                <FatScoreChart data={userInfo} />
-                            </div>
-                        </div>
-
-                        <div className="nutritional-intake">
-                            <NutrientInfo nutrientType='calorie' data={userInfo.keyData} />
-                            <NutrientInfo nutrientType='protein' data={userInfo.keyData} />
-                            <NutrientInfo nutrientType='carbohydrate' data={userInfo.keyData} />
-                            <NutrientInfo nutrientType='lipid' data={userInfo.keyData} />
-                        </div>
-                    </main>
-                </div>
-            </LoadStateContext.Provider>
-        );
-    }
+                    <div className="nutritional-intake">
+                        <NutrientInfo nutrientType='calorie' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='protein' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='carbohydrate' data={userInfo.keyData} />
+                        <NutrientInfo nutrientType='lipid' data={userInfo.keyData} />
+                    </div>
+                </main>
+            </div>
+        </LoadStateContext.Provider>
+    );
 }
 
 export default Home;
