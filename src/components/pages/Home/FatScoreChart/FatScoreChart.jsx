@@ -29,11 +29,11 @@ function FatScore({ data }) {
 
     
     function checkData() {
-        if (loadState && data.hasOwnProperty("todayScore")) {
-            setDataFormatIsValid(true)
-        } else {
-            setDataFormatIsValid(false)
-        }
+      if (loadState && data.hasOwnProperty("todayScore")) {
+          setDataFormatIsValid(true)
+      } else {
+          setDataFormatIsValid(false)
+      }
     }
         
     useEffect(() => {
