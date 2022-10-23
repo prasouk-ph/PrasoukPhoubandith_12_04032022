@@ -3,7 +3,8 @@ import SessionChart from './SessionChart/SessionChart'
 import PerformanceChart from './PerformanceChart/PerformanceChart'
 import FatScoreChart from './FatScoreChart/FatScoreChart'
 import NutrientInfo from './NutrientInfo/NutrientInfo'
-import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData } from '../../../services/userData'
+// import { getUserInfo, getActivitiesData, getSessionsData, getPerformanceData } from '../../../services/userData'
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../../data/userData'
 import { useState, useEffect, createContext } from "react";
 import { useParams } from "react-router-dom";
 import './Home.css';
@@ -26,28 +27,25 @@ function Home() {
     const userName = userInfo?.userInfos?.firstName // without "?" React crashes cause wants to access the property before mounting, while the property has not yet received any content
 
 
-    async function getUserData(userId) {
-        setIsLoaded(false)
-        try {
-            const userInfoResponse = await getUserInfo(userId)
-            setUserInfo(userInfoResponse)
-
-            const userActivitiesDataResponse = await getActivitiesData(userId)
-            setUserActivitiesData(userActivitiesDataResponse)
-
-            const userSessionsDataResponse = await getSessionsData(userId)
-            setUserSessionsData(userSessionsDataResponse)
-
-            const userPerformanceDataResponse = await getPerformanceData(userId)
-            setUserPerformanceData(userPerformanceDataResponse)
+  async function getUserData(userId) {
+      setTimeout(() => {
+        if (!USER_MAIN_DATA[0]
+          || !USER_ACTIVITY[0].sessions
+          || !USER_AVERAGE_SESSIONS[0].sessions
+          || !USER_PERFORMANCE[0]
+        ) {
+          setError(true)
         }
-        catch (error) {
-            console.log(error.message)
-            setError(true)
-        }
-        finally {
-            setIsLoaded(true)
-        }
+
+        setUserInfo(USER_MAIN_DATA[0])
+  
+        setUserActivitiesData(USER_ACTIVITY[0].sessions)
+  
+        setUserSessionsData(USER_AVERAGE_SESSIONS[0].sessions)
+  
+        setUserPerformanceData(USER_PERFORMANCE[0])
+        setIsLoaded(true)
+      }, "700")
     }
     
     useEffect(() => {
